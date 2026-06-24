@@ -3,16 +3,14 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import CountUp from "@/components/CountUp";
 import { 
-  ArrowRight, 
-  Leaf, 
-  ShieldCheck, 
-  Zap, 
-  Award, 
-  CheckCircle2, 
-  Building2, 
-  Home as HomeIcon, 
-  TrendingUp 
+  ArrowRight,
+  Leaf,
+  ShieldCheck,
+  Zap,
+  Award,
+  TrendingUp
 } from "lucide-react";
 
 export default function Home() {
@@ -34,225 +32,232 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  const coreValues = [
+    {
+      href: "/about",
+      icon: <ShieldCheck className="w-6 h-6" />,
+      title: "12년 검증된 시공력",
+      desc: "2014년 현수에너지로 시작해 누적 설치용량 80MW를 달성했습니다. 영업·설계·시공·유지보수 전 과정을 자체 인력으로 책임집니다.",
+      image: "/images/factory-solar.png",
+    },
+    {
+      href: "/about",
+      icon: <TrendingUp className="w-6 h-6" />,
+      title: "정량적 사업타당성 분석",
+      desc: "일조량·경사도·음영을 반영한 발전량 시뮬레이션으로 RPS·PPA·지붕임대 사업의 예상 수익과 회수 기간을 사전에 투명하게 제시합니다.",
+      image: "/images/ground-solar.png",
+    },
+    {
+      href: "/business",
+      icon: <Zap className="w-6 h-6" />,
+      title: "전담 유지보수팀 O&M",
+      desc: "전담 유지보수팀이 가동·모니터링을 책임집니다. 고장 감지 즉시 현장에 대응하여 20년 발전 수명 동안 발전 손실을 최소화합니다.",
+      image: "/images/om-monitoring.png",
+    },
+  ];
+
   return (
     <div className="flex flex-col bg-white">
-      {/* Hero Section */}
-      <section className="pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden bg-gradient-to-b from-toss-blue-light/30 via-white to-white">
-        <div className="container-inner">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-            {/* Left Column: Copy + CTA */}
-            <div className="md:col-span-7 flex flex-col gap-6 text-left" data-reveal>
-              <div className="inline-flex self-start items-center gap-2 px-3 py-1 bg-toss-blue-light text-toss-blue rounded-full text-[13px] font-medium">
+      {/* Hero Section — Full background image */}
+      <section className="relative overflow-hidden pt-32 pb-28 md:pt-44 md:pb-40">
+        {/* Background image */}
+        <Image
+          src="/01.jpg"
+          alt="공장 지붕 위에 설치된 대남에너지 태양광 발전 설비"
+          fill
+          sizes="100vw"
+          className="object-cover"
+          preload
+        />
+        {/* Readability overlay — 좌측 텍스트 영역만 어둡게, 우측은 이미지가 드러나도록 */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/50 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent"></div>
+
+        <div className="container-inner relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Column: Copy + CTA — 스태거 등장 애니메이션 */}
+            <div className="lg:col-span-7 flex flex-col gap-6 text-left">
+              <div className="animate-rise inline-flex self-start items-center gap-2 px-3 py-1 bg-brand-green/20 backdrop-blur text-brand-green-light ring-1 ring-brand-green/40 rounded-full text-[13px] font-semibold" style={{ animationDelay: "0.1s" }}>
                 <Leaf className="w-3.5 h-3.5" />
-                지속 가능한 태양광 파트너
+                12년 경력의 태양광 발전 전문 기업
               </div>
-              
-              <h1 className="text-4xl md:text-5xl lg:text-[46px] font-bold text-grey-900 leading-[1.25] tracking-tight whitespace-pre-line">
-                태양으로 꿈꾸는 내일,{"\n"}
-                <span className="text-toss-blue">선드림 에너지</span>
+
+              <h1 className="animate-rise text-4xl md:text-5xl lg:text-[46px] font-bold text-white leading-[1.25] tracking-tight whitespace-pre-line drop-shadow-sm" style={{ animationDelay: "0.22s" }}>
+                태양광으로 만드는 내일,{"\n"}
+                <span className="text-blue-300">대남에너지</span>
               </h1>
-              
-              <p className="text-lg md:text-[18px] text-grey-700 leading-relaxed max-w-xl">
-                지속 가능한 내일을 위한 가장 투명하고 효율적인 솔루션.{"\n"}
-                공장 지붕부터 주택 옥상까지 친환경 에너지를 통해 지출을 줄이고 안정적인 고정 수익을 창출하세요.
+
+              <p className="animate-rise text-lg md:text-[18px] text-white/85 leading-relaxed max-w-xl" style={{ animationDelay: "0.34s" }}>
+                2014년 설립 이후 누적 설치용량 80MW를 달성한 종합 에너지 솔루션 기업.{"\n"}
+                RPS 발전사업부터 자가용 PPA, 지붕임대사업까지 안정적인 수익과 RE100 달성을 함께 만들어갑니다.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 mt-4">
-                <Link 
-                  href="/calculator"
-                  className="px-6 py-4 bg-toss-blue hover:bg-toss-blue-dark text-white font-semibold rounded-xl text-[16px] transition-all duration-200 flex items-center justify-center gap-2 shadow-sm"
+              <div className="animate-rise flex flex-col sm:flex-row gap-3 mt-4" style={{ animationDelay: "0.46s" }}>
+                <Link
+                  href="/contact"
+                  className="btn-sheen px-6 py-4 bg-white hover:bg-grey-50 text-toss-blue font-bold rounded-xl text-[16px] transition-all duration-200 flex items-center justify-center gap-2 shadow-lg shadow-slate-950/20 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
                 >
-                  실시간 수익 계산기
+                  무료 상담·견적 문의
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link 
-                  href="/contact"
-                  className="px-6 py-4 bg-grey-100 hover:bg-grey-200 text-grey-900 font-semibold rounded-xl text-[16px] transition-all duration-200 text-center"
+                <Link
+                  href="/business"
+                  className="px-6 py-4 bg-white/10 hover:bg-white/20 backdrop-blur border border-white/30 text-white font-semibold rounded-xl text-[16px] transition-all duration-200 text-center hover:-translate-y-0.5 active:translate-y-0"
                 >
-                  간편 견적 문의하기
+                  사업 영역 살펴보기
                 </Link>
               </div>
 
               {/* Trust badging */}
-              <div className="flex items-center gap-6 mt-6 pt-6 border-t border-grey-100">
-                <div className="flex items-center gap-1.5 text-[14px] text-grey-700">
-                  <ShieldCheck className="w-4 h-4 text-toss-blue" />
-                  100% 정품 모듈 사용
+              <div className="animate-rise flex flex-wrap items-center gap-x-6 gap-y-3 mt-6 pt-6 border-t border-white/15" style={{ animationDelay: "0.58s" }}>
+                <div className="flex items-center gap-1.5 text-[14px] text-white/90">
+                  <Award className="w-4 h-4 text-blue-300" />
+                  12년 태양광 전문 경력
                 </div>
-                <div className="flex items-center gap-1.5 text-[14px] text-grey-700">
-                  <Award className="w-4 h-4 text-toss-blue" />
-                  전문 면허 시공팀
+                <div className="flex items-center gap-1.5 text-[14px] text-white/90">
+                  <TrendingUp className="w-4 h-4 text-blue-300" />
+                  누적 설치용량 80MW
                 </div>
-                <div className="flex items-center gap-1.5 text-[14px] text-grey-700">
-                  <CheckCircle2 className="w-4 h-4 text-toss-blue" />
-                  안심 20년 사후 관리
+                <div className="flex items-center gap-1.5 text-[14px] text-white/90">
+                  <ShieldCheck className="w-4 h-4 text-blue-300" />
+                  전담 유지보수팀 운영
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Illustration with floating cards */}
-            <div className="md:col-span-5 relative flex items-center justify-center min-h-[360px] delay-150" data-reveal>
-              <div className="absolute w-72 h-72 bg-yellow-400/20 rounded-full filter blur-3xl -z-10 animate-pulse"></div>
-              <div className="relative w-full max-w-md aspect-[4/3] rounded-3xl overflow-hidden shadow-xl ring-1 ring-grey-100">
-                <Image
-                  src="/images/hero-solar.png"
-                  alt="공장 지붕 위에 설치된 선드림 에너지 태양광 발전 설비"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 420px"
-                  className="object-cover"
-                  preload
-                />
-                <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-3xl"></div>
-              </div>
+          </div>
+        </div>
+      </section>
 
-              {/* Floating Data Card 1 */}
-              <div className="absolute -top-4 -left-6 md:-left-10 bg-white/95 backdrop-blur border border-grey-100 p-4 rounded-2xl shadow-xl flex items-center gap-3 animate-float-slow select-none">
-                <div className="w-10 h-10 rounded-full bg-toss-blue-light flex items-center justify-center text-toss-blue">
-                  <Zap className="w-5 h-5 fill-toss-blue" />
-                </div>
-                <div>
-                  <div className="text-[12px] text-grey-500 font-medium leading-none">실시간 발전 효율</div>
-                  <div className="text-[16px] font-bold text-grey-900 mt-1">98.4% 최적 발전 중</div>
-                </div>
+      {/* Stats Counter Section */}
+      <section className="py-16 md:py-20 bg-white border-b border-grey-100">
+        <div className="container-inner">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10">
+            <div className="flex flex-col items-center text-center gap-2 reveal-up" data-reveal>
+              <div className="text-4xl md:text-5xl font-bold text-toss-blue tracking-tight">
+                <CountUp end={12} />
+                <span className="text-2xl md:text-3xl align-top ml-0.5">년</span>
               </div>
+              <div className="text-[14px] md:text-[15px] text-grey-700 font-medium">태양광 전문 경력</div>
+            </div>
 
-              {/* Floating Data Card 2 */}
-              <div className="absolute -bottom-6 -right-2 bg-white/95 backdrop-blur border border-grey-100 p-4 rounded-2xl shadow-xl flex flex-col gap-1.5 animate-float-slower select-none">
-                <div className="flex items-center gap-1.5 text-emerald-600 font-semibold text-[13px]">
-                  <Leaf className="w-4 h-4 fill-emerald-600/10" />
-                  탄소 배출 저감 효과
-                </div>
-                <div className="text-[15px] font-bold text-grey-900">
-                  누적 소나무 3,420그루 식재
-                </div>
-                <div className="text-[12px] text-grey-500">
-                  선드림 에너지 시공처 누적 합산 기준
-                </div>
+            <div className="flex flex-col items-center text-center gap-2 reveal-up" data-reveal style={{ transitionDelay: "0.1s" }}>
+              <div className="text-4xl md:text-5xl font-bold text-toss-blue tracking-tight">
+                <CountUp end={80} />
+                <span className="text-2xl md:text-3xl align-top ml-0.5">MW</span>
               </div>
+              <div className="text-[14px] md:text-[15px] text-grey-700 font-medium">누적 설치용량</div>
+            </div>
+
+            <div className="flex flex-col items-center text-center gap-2 reveal-up" data-reveal style={{ transitionDelay: "0.2s" }}>
+              <div className="text-4xl md:text-5xl font-bold text-toss-blue tracking-tight">
+                <CountUp end={98.4} decimals={1} />
+                <span className="text-2xl md:text-3xl align-top ml-0.5">%</span>
+              </div>
+              <div className="text-[14px] md:text-[15px] text-grey-700 font-medium">평균 발전 효율</div>
+            </div>
+
+            <div className="flex flex-col items-center text-center gap-2 reveal-up" data-reveal style={{ transitionDelay: "0.3s" }}>
+              <div className="text-4xl md:text-5xl font-bold text-brand-green tracking-tight">
+                <CountUp end={3420} />
+                <span className="text-2xl md:text-3xl align-top ml-0.5">그루</span>
+              </div>
+              <div className="text-[14px] md:text-[15px] text-grey-700 font-medium">누적 소나무 식재 효과</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Feature Highlight Section */}
-      <section className="py-20 bg-white border-t border-grey-100">
+      <section className="py-20 md:py-24 bg-[#f1f6fc] border-y border-grey-100">
         <div className="container-inner">
           <div className="text-center max-w-2xl mx-auto mb-16" data-reveal>
             <span className="text-[13px] text-toss-blue font-bold tracking-wider uppercase font-semibold">CORE VALUES</span>
-            <h2 className="text-3xl font-bold text-grey-900 mt-2 mb-4 tracking-tight">선드림 에너지의 약속</h2>
+            <h2 className="text-3xl font-bold text-grey-900 mt-2 mb-4 tracking-tight">대남에너지의 약속</h2>
             <p className="text-lg text-grey-700">
-              우리는 정직함과 정밀함을 철칙으로 가장 높은 투명함을 유지합니다.
+              12년의 현장 경험과 정량적 데이터로 가장 신뢰할 수 있는 태양광 사업을 설계합니다.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Link href="/about" className="bg-grey-50 p-8 rounded-2xl flex flex-col gap-4 border border-transparent hover:border-grey-200 hover:-translate-y-1 transition-all duration-300 group" data-reveal>
-              <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-toss-blue group-hover:scale-110 transition-transform duration-300">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-grey-900">철저한 투명 정밀 시공</h3>
-              <p className="text-grey-700 leading-relaxed text-[15px]">
-                한화 Q셀 등 대기업 1등급 정품 모듈만을 사용하여 수명 20년을 보장합니다. 저가 자재를 배제하여 안전합니다.
-              </p>
-              <span className="text-toss-blue font-semibold text-[14px] mt-2 flex items-center gap-1">
-                자세히 보기 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </Link>
+            {coreValues.map((cv, i) => (
+              <Link
+                key={i}
+                href={cv.href}
+                className="card-lift group relative overflow-hidden rounded-2xl border border-grey-100 bg-white flex min-h-[320px]"
+                data-reveal
+                style={{ transitionDelay: `${i * 0.1}s` }}
+              >
+                {/* Hover image reveal */}
+                <Image
+                  src={cv.image}
+                  alt=""
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover opacity-0 scale-105 group-hover:opacity-100 group-hover:scale-100 transition-all duration-[600ms] ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/55 to-slate-900/25 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-            <Link href="/about" className="bg-grey-50 p-8 rounded-2xl flex flex-col gap-4 border border-transparent hover:border-grey-200 hover:-translate-y-1 transition-all duration-300 group delay-100" data-reveal>
-              <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-toss-blue group-hover:scale-110 transition-transform duration-300">
-                <TrendingUp className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-grey-900">정량적 시뮬레이션 기반</h3>
-              <p className="text-grey-700 leading-relaxed text-[15px]">
-                일조량, 경사도, 음영 등을 철저히 3D 정밀 시뮬레이션하여 보수적이고 정확한 수익성 데이터를 사전에 제공합니다.
-              </p>
-              <span className="text-toss-blue font-semibold text-[14px] mt-2 flex items-center gap-1">
-                자세히 보기 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </Link>
-
-            <Link href="/business" className="bg-grey-50 p-8 rounded-2xl flex flex-col gap-4 border border-transparent hover:border-grey-200 hover:-translate-y-1 transition-all duration-300 group delay-200" data-reveal>
-              <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-toss-blue group-hover:scale-110 transition-transform duration-300">
-                <Zap className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold text-grey-900">신속 전담 사후 유지관리</h3>
-              <p className="text-grey-700 leading-relaxed text-[15px]">
-                고장 발생 감지 즉시 24시간 내 전문 전담 엔지니어가 현장에 긴급 출동하여 발전 손실을 확실하게 최소화합니다.
-              </p>
-              <span className="text-toss-blue font-semibold text-[14px] mt-2 flex items-center gap-1">
-                자세히 보기 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </Link>
+                {/* Content */}
+                <div className="relative z-10 p-8 flex flex-col gap-4 flex-1">
+                  <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-toss-blue group-hover:scale-110 transition-transform duration-300">
+                    {cv.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-grey-900 group-hover:text-white transition-colors duration-300">{cv.title}</h3>
+                  <p className="text-grey-700 group-hover:text-white/85 leading-relaxed text-[15px] transition-colors duration-300">
+                    {cv.desc}
+                  </p>
+                  <span className="text-toss-blue group-hover:text-white font-semibold text-[14px] mt-auto pt-2 flex items-center gap-1 transition-colors duration-300">
+                    자세히 보기 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Business Focus Segment */}
-      <section className="py-20 bg-grey-50 border-t border-grey-100">
-        <div className="container-inner">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5 flex flex-col gap-6" data-reveal>
-              <span className="text-[13px] text-toss-blue font-bold tracking-wider uppercase">SERVICE FIELDS</span>
-              <h2 className="text-3xl font-bold text-grey-900 tracking-tight leading-tight whitespace-pre-line">
-                어디서나 간편하게{"\n"}발전 설비를 올려보세요
-              </h2>
-              <p className="text-grey-700 leading-relaxed text-base">
-                선드림 에너지는 공장 옥상 유휴 지붕, 넓은 상업용 지상 야지부터 개별 단독 전원주택까지 모든 공간에 가장 고품격 디자인과 완벽한 시공 공법을 제시합니다.
-              </p>
-              <div>
-                <Link 
-                  href="/business"
-                  className="px-5 py-3.5 bg-toss-blue hover:bg-toss-blue-dark text-white font-semibold rounded-xl text-[15px] transition-all duration-200 inline-flex items-center gap-1.5 shadow-sm"
-                >
-                  시공 사업영역 확인하기
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+      {/* Business Focus Segment — 풀블리드 대형 이미지 */}
+      <section className="relative bg-white overflow-hidden">
+        <div className="grid lg:grid-cols-2 items-stretch">
+          {/* Image side — 좌측 화면 끝까지 풀블리드 */}
+          <div className="relative min-h-[340px] lg:min-h-[620px] overflow-hidden group" data-reveal>
+            <Image
+              src="/images/ground-solar.png"
+              alt="유휴 부지를 활용한 대규모 태양광 발전 단지"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent"></div>
+          </div>
+
+          {/* Text side — 1400 컨테이너 우측 정렬 */}
+          <div className="flex items-center bg-white">
+            <div className="w-full px-6 sm:px-10 lg:pl-16 xl:pl-24 lg:pr-[max(1.5rem,calc((100vw_-_1400px)/2_+_1.5rem))] py-16 lg:py-28">
+              <div className="max-w-xl flex flex-col gap-6" data-reveal>
+                <span className="text-[13px] text-toss-blue font-bold tracking-wider uppercase">BUSINESS MODELS</span>
+                <h2 className="text-3xl md:text-[40px] font-bold text-grey-900 tracking-tight leading-[1.25] whitespace-pre-line">
+                  유휴 공간을{"\n"}안정적인 수익으로
+                </h2>
+                <p className="text-grey-700 leading-relaxed text-base md:text-lg">
+                  대남에너지는 RPS 발전사업, 자가용 PPA, 지붕임대사업 세 가지 모델로 공장 지붕과 유휴 부지를 활용합니다. 초기 투자 부담은 줄이고, 전기요금 절감과 장기 임대·발전 수익을 동시에 만들어드립니다.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3.5 py-1.5 rounded-full bg-toss-blue-light text-toss-blue text-[13px] font-semibold">RPS 발전사업</span>
+                  <span className="px-3.5 py-1.5 rounded-full bg-toss-blue-light text-toss-blue text-[13px] font-semibold">자가용 PPA</span>
+                  <span className="px-3.5 py-1.5 rounded-full bg-brand-green-light text-brand-green text-[13px] font-semibold">지붕임대사업</span>
+                </div>
+                <div className="mt-2">
+                  <Link
+                    href="/business"
+                    className="btn-sheen px-6 py-4 bg-toss-blue hover:bg-toss-blue-dark text-white font-semibold rounded-xl text-[15px] transition-all duration-200 inline-flex items-center gap-1.5 shadow-sm hover:-translate-y-0.5 hover:shadow-md active:translate-y-0"
+                  >
+                    시공 사업영역 확인하기
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
-            </div>
-
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <Link href="/business" className="bg-white rounded-3xl shadow-sm border border-grey-100 hover:border-grey-200 hover:shadow-md transition-all duration-300 flex flex-col group overflow-hidden" data-reveal>
-                <div className="relative h-40 w-full overflow-hidden">
-                  <Image
-                    src="/images/factory-solar.png"
-                    alt="공장 지붕에 설치된 대규모 태양광 패널"
-                    fill
-                    sizes="(max-width: 640px) 100vw, 320px"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-8 flex flex-col gap-4">
-                  <div className="w-11 h-11 bg-blue-50 text-toss-blue rounded-xl flex items-center justify-center -mt-14 relative z-10 shadow-sm ring-4 ring-white">
-                    <Building2 className="w-5.5 h-5.5" />
-                  </div>
-                  <h3 className="text-lg font-bold text-grey-900">공장 및 상업용</h3>
-                  <p className="text-grey-500 text-[14px] leading-relaxed">
-                    RE100 대응 및 세제 혜택 극대화. 지붕 파손이 전혀 없는 안전한 무타공 시공으로 장기적인 부가 수익을 확보하세요.
-                  </p>
-                </div>
-              </Link>
-
-              <Link href="/business" className="bg-white rounded-3xl shadow-sm border border-grey-100 hover:border-grey-200 hover:shadow-md transition-all duration-300 flex flex-col group overflow-hidden" data-reveal>
-                <div className="relative h-40 w-full overflow-hidden">
-                  <Image
-                    src="/images/residential-solar.png"
-                    alt="단독주택 지붕에 설치된 올블랙 태양광 모듈"
-                    fill
-                    sizes="(max-width: 640px) 100vw, 320px"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-8 flex flex-col gap-4">
-                  <div className="w-11 h-11 bg-amber-50 text-amber-500 rounded-xl flex items-center justify-center -mt-14 relative z-10 shadow-sm ring-4 ring-white">
-                    <HomeIcon className="w-5.5 h-5.5" />
-                  </div>
-                  <h3 className="text-lg font-bold text-grey-900">주택 및 가정용</h3>
-                  <p className="text-grey-500 text-[14px] leading-relaxed">
-                    한여름 에어컨 풀가동 누진세 대책. 주택 고유의 옥상 구조를 살려 최적화된 각도 설계로 전기료를 최대 90% 아껴드립니다.
-                  </p>
-                </div>
-              </Link>
             </div>
           </div>
         </div>
@@ -276,70 +281,28 @@ export default function Home() {
         <div className="container-inner relative z-10 text-center max-w-3xl mx-auto flex flex-col gap-6 items-center" data-reveal>
           <span className="text-[13px] bg-white/10 text-white/90 font-bold px-3 py-1 rounded-full uppercase tracking-wider select-none">CONSULTATION</span>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight">
-            지금 우리 부지의 발전 가치를{"\n"}무료로 실시간 시뮬레이션해보세요
+            지금 우리 부지의 발전 가치를{"\n"}무료로 진단받아보세요
           </h2>
           <p className="text-white/85 text-base md:text-lg leading-relaxed max-w-xl">
-            선드림 에너지는 과장과 허위 없이, 가장 보수적이고 객관적인 데이터로 상세 분석하여 최적의 제안을 약속드립니다.
+            대남에너지는 과장 없이 가장 보수적이고 객관적인 데이터로 사업타당성을 분석하여 최적의 제안을 약속드립니다.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto">
-            <Link 
-              href="/calculator"
-              className="px-6 py-4 bg-white hover:bg-grey-50 text-toss-blue font-bold rounded-xl text-[16px] transition-all duration-200 text-center shadow-md shadow-blue-900/10"
-            >
-              간편 수익 계산해보기
-            </Link>
-            <Link 
+            <Link
               href="/contact"
-              className="px-6 py-4 bg-toss-blue-dark hover:bg-opacity-90 border border-white/20 text-white font-bold rounded-xl text-[16px] transition-all duration-200 text-center"
+              className="btn-sheen px-6 py-4 bg-white hover:bg-grey-50 text-toss-blue font-bold rounded-xl text-[16px] transition-all duration-200 text-center shadow-md shadow-blue-900/10 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0"
             >
               1:1 맞춤 무료 상담 신청
+            </Link>
+            <Link
+              href="/business"
+              className="px-6 py-4 bg-toss-blue-dark hover:bg-toss-blue border border-white/20 text-white font-bold rounded-xl text-[16px] transition-all duration-200 text-center hover:-translate-y-0.5 active:translate-y-0"
+            >
+              사업 영역 자세히 보기
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Embedded Global Style shim for standard animations inside App Router */}
-      <style jsx global>{`
-        @keyframes floatSlow {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-8px); }
-        }
-        @keyframes floatSlower {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-12px); }
-        }
-        @keyframes scaleIn {
-          from { transform: scale(0.95); opacity: 0; }
-          to { transform: scale(1); opacity: 1; }
-        }
-        .animate-float-slow {
-          animation: floatSlow 6s ease-in-out infinite;
-        }
-        .animate-float-slower {
-          animation: floatSlower 8s ease-in-out infinite;
-        }
-        .animate-scale-in {
-          animation: scaleIn 0.3s cubic-bezier(0.3, 0, 0.1, 1) forwards;
-        }
-        .animate-spin-slow {
-          animation: spin 20s linear infinite;
-        }
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        
-        /* Reveal states */
-        [data-reveal] {
-          opacity: 0;
-          transform: translateY(30px);
-          transition: transform 0.8s cubic-bezier(0.3, 0, 0.1, 1), opacity 0.8s cubic-bezier(0.3, 0, 0.1, 1);
-        }
-        [data-reveal].is-revealed {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      `}</style>
     </div>
   );
 }

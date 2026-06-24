@@ -3,9 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #191f28; /* TDS Grey 900 */
-  --toss-blue: #3182f6;
-  --toss-blue-dark: #1b64da;
-  --toss-blue-light: #e8f3ff;
+  /* DN energy 브랜드 포인트 컬러 */
+  --toss-blue: #15499a;        /* 메인 포인트 (DN energy 블루) */
+  --toss-blue-dark: #0f3877;   /* 호버/클릭 시 어두운 톤 */
+  --toss-blue-light: #e7eef7;  /* 가벼운 강조 배경 칩 */
+  --brand-green: #73b839;      /* 보조 액센트 (잎사귀 그린) */
+  --brand-green-light: #eef6e4;/* 보조 액센트 연한 배경 */
   --grey-50: #f9fafb;
   --grey-100: #f2f4f6;
   --grey-200: #e5e8eb;
@@ -21,6 +24,8 @@
   --color-toss-blue: var(--toss-blue);
   --color-toss-blue-dark: var(--toss-blue-dark);
   --color-toss-blue-light: var(--toss-blue-light);
+  --color-brand-green: var(--brand-green);
+  --color-brand-green-light: var(--brand-green-light);
   --color-grey-50: var(--grey-50);
   --color-grey-100: var(--grey-100);
   --color-grey-200: var(--grey-200);
@@ -55,27 +60,117 @@ body {
   background: var(--grey-300);
 }
 
-/* IntersectionObserver reveal safety net */
+/* ===== Scroll Reveal (JS-gated, premium easing) ===== */
 @keyframes failsafeReveal {
   to {
     opacity: 1;
     transform: none;
   }
 }
-[data-reveal] {
-  animation: failsafeReveal 0.01s ease 2s forwards;
-}
+/* JS가 준비됐을 때만 숨김 — JS 미동작 시 콘텐츠는 항상 노출 */
 html.js-ready [data-reveal] {
-  animation: none;
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+html.js-ready [data-reveal].reveal-up { transform: translateY(40px); }
+html.js-ready [data-reveal].reveal-scale { transform: scale(0.94); }
+html.js-ready [data-reveal].reveal-left { transform: translateX(-36px); }
+html.js-ready [data-reveal].reveal-right { transform: translateX(36px); }
+html.js-ready [data-reveal].reveal-blur { filter: blur(8px); }
+html.js-ready [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+/* 비-JS 환경 안전망 */
+html:not(.js-ready) [data-reveal] {
+  animation: failsafeReveal 0.01s ease 1.5s forwards;
 }
 .is-revealed {
-  opacity: 1 !important;
-  transform: none !important;
+  opacity: 1;
+  transform: none;
+}
+
+/* ===== Shared keyframes & utility animations (site-wide) ===== */
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sheen {
+  0% { transform: translateX(-120%) skewX(-20deg); }
+  60%, 100% { transform: translateX(220%) skewX(-20deg); }
+}
+.animate-scale-in { animation: scaleIn 0.3s cubic-bezier(0.3, 0, 0.1, 1) forwards; }
+.animate-spin-slow { animation: spin 22s linear infinite; }
+.animate-float-slow { animation: floatSlow 6s ease-in-out infinite; }
+.animate-rise {
+  opacity: 0;
+  animation: riseIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ===== Premium hover helpers ===== */
+.card-lift {
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease;
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px -22px rgba(21, 73, 154, 0.30);
+}
+/* 버튼 위 빛 스침(sheen) 효과 */
+.btn-sheen { position: relative; overflow: hidden; }
+.btn-sheen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: translateX(-120%) skewX(-20deg);
+  pointer-events: none;
+}
+.btn-sheen:hover::after { animation: sheen 0.9s ease forwards; }
+
+/* 접근성: 모션 최소화 설정 시 애니메이션 비활성화 */
+@media (prefers-reduced-motion: reduce) {
+  html.js-ready [data-reveal],
+  .animate-rise,
+  .animate-float-slow,
+  .animate-scale-in,
+  .animate-spin-slow,
+  .card-lift {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .btn-sheen::after { display: none; }
 }
 
 /* Utility to ensure standard horizontal margins in sections */
 .container-inner {
-  max-width: 1040px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 24px;
 }

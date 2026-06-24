@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { 
-  Phone, 
-  Mail, 
-  Calendar, 
-  Clock, 
-  Check, 
-  ShieldCheck 
+import PageHero from "@/components/PageHero";
+import {
+  Phone,
+  Mail,
+  Calendar,
+  Clock,
+  Check
 } from "lucide-react";
 
 export default function ContactPage() {
@@ -68,8 +68,16 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="py-16 md:py-24 bg-white">
-      <div className="container-inner">
+    <div className="bg-white">
+      {/* Common Category Hero — 풀폭 배경, 콘텐츠는 1400px 정렬 */}
+      <PageHero
+        eyebrow="CONTACT"
+        title="고객센터"
+        description="무료 상담과 견적 문의를 남겨주시면 12년 경력의 대남에너지 전문가가 빠르게 답변드립니다."
+      />
+      {/* 이미지 준비 시: image="/images/contact-hero.png" 추가 */}
+
+      <div className="container-inner py-[90px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left Area: Company Details & Direct contacts */}
           <div className="lg:col-span-5 flex flex-col gap-6" data-reveal>
@@ -78,13 +86,13 @@ export default function ContactPage() {
               실시간 무료 상담 대기 중
             </div>
 
-            <h1 className="text-3xl md:text-4xl font-bold text-grey-900 tracking-tight leading-tight whitespace-pre-line">
-              지금 선드림 에너지와{"\n"}상담해보세요
-            </h1>
-            
+            <h2 className="text-3xl md:text-4xl font-bold text-grey-900 tracking-tight leading-tight whitespace-pre-line">
+              지금 대남에너지와{"\n"}상담해보세요
+            </h2>
+
             <p className="text-grey-700 text-base leading-relaxed">
-              복잡한 인허가 절차부터 대출 지원 연계, 완벽한 사후 관리까지.{"\n"}
-              에너지 전문가가 친절하게 모든 의문점을 풀어드립니다.
+              사업타당성 검토부터 인허가, 시공·계통연계, 사후 유지관리까지.{"\n"}
+              12년 경력의 에너지 전문가가 모든 과정을 책임지고 안내해 드립니다.
             </p>
 
             {/* Contact direct link cards */}
