@@ -36,6 +36,17 @@ yarn-error.log*
 # vercel
 .vercel
 
+# agent / tooling configs
+/.claude/
+/.codex/
+/.opencode/
+
+# scratch / local notes
+/1.md
+/Untitled
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel
