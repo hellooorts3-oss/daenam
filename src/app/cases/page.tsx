@@ -97,8 +97,9 @@ export default function CasesPage() {
         eyebrow="PORTFOLIO"
         title="대남에너지 시공 실적"
         description="누적 설치용량 80MW. 수많은 기업과 시설이 대남에너지와 함께 안정적인 에너지 수익을 누리고 있습니다."
+        image="/08.jpg"
+        imageAlt="대남에너지 지붕형 태양광 시공 현장"
       />
-      {/* 이미지 준비 시: image="/images/cases-hero.png" 추가 */}
 
       <div className="container-inner py-[90px]">
         {/* Case Studies Grid */}

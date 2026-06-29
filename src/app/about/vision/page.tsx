@@ -38,8 +38,9 @@ export default function VisionPage() {
         eyebrow="VISION"
         title="대남에너지의 비전"
         description="태양광 전 분야를 아우르는 종합 에너지 솔루션 기업으로서, ESG 경영과 탄소중립 실현에 앞장섭니다."
+        image="/03.jpg"
+        imageAlt="대남에너지 태양광 발전 단지"
       />
-      {/* 이미지 준비 시: image="/images/vision-hero.png" 추가 */}
 
       <div className="container-inner py-[90px]">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

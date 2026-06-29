@@ -172,5 +172,5 @@ html:not(.js-ready) [data-reveal] {
 .container-inner {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding-inline: 24px;
 }

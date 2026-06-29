@@ -8,7 +8,6 @@ import {
   ArrowRight,
   Leaf,
   ShieldCheck,
-  Zap,
   Award,
   TrendingUp
 } from "lucide-react";
@@ -35,21 +34,18 @@ export default function Home() {
   const coreValues = [
     {
       href: "/about",
-      icon: <ShieldCheck className="w-6 h-6" />,
       title: "12년 검증된 시공력",
       desc: "2014년 현수에너지로 시작해 누적 설치용량 80MW를 달성했습니다. 영업·설계·시공·유지보수 전 과정을 자체 인력으로 책임집니다.",
       image: "/images/factory-solar.png",
     },
     {
       href: "/about",
-      icon: <TrendingUp className="w-6 h-6" />,
       title: "정량적 사업타당성 분석",
       desc: "일조량·경사도·음영을 반영한 발전량 시뮬레이션으로 RPS·PPA·지붕임대 사업의 예상 수익과 회수 기간을 사전에 투명하게 제시합니다.",
       image: "/images/ground-solar.png",
     },
     {
       href: "/business",
-      icon: <Zap className="w-6 h-6" />,
       title: "전담 유지보수팀 O&M",
       desc: "전담 유지보수팀이 가동·모니터링을 책임집니다. 고장 감지 즉시 현장에 대응하여 20년 발전 수명 동안 발전 손실을 최소화합니다.",
       image: "/images/om-monitoring.png",
@@ -196,15 +192,13 @@ export default function Home() {
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-cover opacity-0 scale-105 group-hover:opacity-100 group-hover:scale-100 transition-all duration-[600ms] ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/55 to-slate-900/25 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                {/* 호버 시 일정한 블랙 반투명 오버레이 (가독성) */}
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                 {/* Content */}
                 <div className="relative z-10 p-8 flex flex-col gap-4 flex-1">
-                  <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-toss-blue group-hover:scale-110 transition-transform duration-300">
-                    {cv.icon}
-                  </div>
                   <h3 className="text-xl font-bold text-grey-900 group-hover:text-white transition-colors duration-300">{cv.title}</h3>
-                  <p className="text-grey-700 group-hover:text-white/85 leading-relaxed text-[15px] transition-colors duration-300">
+                  <p className="text-grey-700 group-hover:text-white/85 leading-relaxed text-[16px] transition-colors duration-300">
                     {cv.desc}
                   </p>
                   <span className="text-toss-blue group-hover:text-white font-semibold text-[14px] mt-auto pt-2 flex items-center gap-1 transition-colors duration-300">
@@ -263,16 +257,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Conversion Banner */}
-      <section className="py-24 text-white overflow-hidden relative bg-toss-blue">
-        {/* Background image with overlay */}
-        <Image
-          src="/images/cta-field.png"
-          alt="석양이 비치는 대규모 태양광 발전 단지"
-          fill
-          sizes="100vw"
-          className="object-cover z-0"
-        />
+      {/* CTA Conversion Banner — 고정 배경(parallax) */}
+      <section className="py-24 text-white overflow-hidden relative bg-toss-blue bg-[url('/images/cta-field.png')] bg-cover bg-center bg-fixed">
+        {/* 가독성 오버레이 */}
         <div className="absolute inset-0 z-0 bg-gradient-to-r from-toss-blue/95 via-toss-blue/85 to-toss-blue-dark/75"></div>
         {/* Soft background glow circles */}
         <div className="absolute -top-12 -left-12 w-64 h-64 bg-white/5 rounded-full filter blur-2xl"></div>

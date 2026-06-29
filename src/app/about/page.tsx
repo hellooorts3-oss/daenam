@@ -43,8 +43,9 @@ export default function AboutPage() {
         eyebrow="ABOUT US"
         title="대남에너지 (DN energy) 이야기"
         description={"당사는 2014년 설립 이후 지속적인 성장을 거듭하며 태양광 산업의 선두주자로 자리매김하였습니다.\n고객 만족과 기술 혁신을 통해 신뢰받는 기업이 되겠습니다."}
+        image="/02.jpg"
+        imageAlt="대남에너지 태양광 발전 현장"
       />
-      {/* 이미지 준비 시: <PageHero ... image="/images/about-hero.png" imageAlt="대남에너지 태양광 발전 단지" /> */}
 
       <div className="container-inner py-[90px]">
         {/* Key Stats */}

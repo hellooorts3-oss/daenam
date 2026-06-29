@@ -74,8 +74,9 @@ export default function ContactPage() {
         eyebrow="CONTACT"
         title="고객센터"
         description="무료 상담과 견적 문의를 남겨주시면 12년 경력의 대남에너지 전문가가 빠르게 답변드립니다."
+        image="/09.jpg"
+        imageAlt="대남에너지 태양광 발전 현장"
       />
-      {/* 이미지 준비 시: image="/images/contact-hero.png" 추가 */}
 
       <div className="container-inner py-[90px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
