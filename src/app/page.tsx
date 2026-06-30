@@ -73,7 +73,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Column: Copy + CTA — 스태거 등장 애니메이션 */}
             <div className="lg:col-span-7 flex flex-col gap-6 text-left">
-              <div className="animate-rise inline-flex self-start items-center gap-2 px-3 py-1 bg-brand-green/20 backdrop-blur text-brand-green-light ring-1 ring-brand-green/40 rounded-full text-[13px] font-semibold" style={{ animationDelay: "0.1s" }}>
+              <div className="animate-rise inline-flex self-start items-center gap-2 px-3 py-1 bg-brand-green/20 backdrop-blur text-brand-green-light ring-1 ring-brand-green/40 rounded-full text-[14px] font-semibold" style={{ animationDelay: "0.1s" }}>
                 <Leaf className="w-3.5 h-3.5" />
                 12년 경력의 태양광 발전 전문 기업
               </div>
@@ -83,9 +83,10 @@ export default function Home() {
                 <span className="text-blue-300">대남에너지</span>
               </h1>
 
-              <p className="animate-rise text-lg md:text-[18px] text-white/85 leading-relaxed max-w-xl" style={{ animationDelay: "0.34s" }}>
+              <p className="animate-rise text-lg md:text-[18px] text-white/85 leading-relaxed max-w-2xl whitespace-pre-line" style={{ animationDelay: "0.34s" }}>
                 2014년 설립 이후 누적 설치용량 80MW를 달성한 종합 에너지 솔루션 기업.{"\n"}
-                RPS 발전사업부터 자가용 PPA, 지붕임대사업까지 안정적인 수익과 RE100 달성을 함께 만들어갑니다.
+                RPS 발전사업부터 자가용 PPA, 지붕임대사업까지{"\n"}
+                안정적인 수익과 RE100 달성을 함께 만들어갑니다.
               </p>
 
               <div className="animate-rise flex flex-col sm:flex-row gap-3 mt-4" style={{ animationDelay: "0.46s" }}>

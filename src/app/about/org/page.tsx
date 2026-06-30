@@ -10,10 +10,10 @@ interface Team {
 }
 
 const teams: Team[] = [
-  { name: "영업팀", desc: "사업 발굴부터 고객 상담, 사업타당성 검토까지 담당합니다." },
-  { name: "설계팀", desc: "발전량 시뮬레이션 기반의 설비용량·구조 설계를 책임집니다." },
-  { name: "시공팀", desc: "안전한 무타공 시공과 준공, 계통연계를 직접 수행합니다." },
-  { name: "유지보수팀", desc: "가동·모니터링과 정기 점검으로 발전 손실을 최소화합니다." },
+  { name: "영업팀", desc: "사업 발굴부터 고객 상담,\n사업타당성 검토까지 담당합니다." },
+  { name: "설계팀", desc: "발전량 시뮬레이션 기반의\n설비용량·구조 설계를 책임집니다." },
+  { name: "시공팀", desc: "안전한 무타공 시공과 준공,\n계통연계를 직접 수행합니다." },
+  { name: "유지보수팀", desc: "가동·모니터링과 정기 점검으로\n발전 손실을 최소화합니다." },
 ];
 
 export default function OrgPage() {
@@ -44,7 +44,7 @@ export default function OrgPage() {
                 <div className="w-full max-w-xs rounded-2xl bg-grey-50 border border-grey-100 p-6 text-right hover:border-toss-blue/40 hover:shadow-md transition-all duration-300">
                   <span className="text-[13px] font-extrabold text-toss-blue/40 tracking-wider">{`0${i + 1}`}</span>
                   <h3 className="text-lg font-bold text-grey-900 mt-1">{team.name}</h3>
-                  <p className="text-[13px] text-grey-700 leading-relaxed mt-2">{team.desc}</p>
+                  <p className="text-[13px] text-grey-700 leading-relaxed mt-2 whitespace-pre-line break-keep">{team.desc}</p>
                 </div>
                 <span className="w-12 h-px bg-grey-300 shrink-0"></span>
                 <span className="w-2.5 h-2.5 rounded-full bg-toss-blue/50 shrink-0 -ml-1"></span>
@@ -76,7 +76,7 @@ export default function OrgPage() {
                 <div className="w-full max-w-xs rounded-2xl bg-grey-50 border border-grey-100 p-6 hover:border-toss-blue/40 hover:shadow-md transition-all duration-300">
                   <span className="text-[13px] font-extrabold text-toss-blue/40 tracking-wider">{`0${i + 3}`}</span>
                   <h3 className="text-lg font-bold text-grey-900 mt-1">{team.name}</h3>
-                  <p className="text-[13px] text-grey-700 leading-relaxed mt-2">{team.desc}</p>
+                  <p className="text-[13px] text-grey-700 leading-relaxed mt-2 whitespace-pre-line break-keep">{team.desc}</p>
                 </div>
               </div>
             ))}
@@ -101,7 +101,7 @@ export default function OrgPage() {
               >
                 <span className="text-[12px] font-extrabold text-toss-blue/40 tracking-wider">{`0${i + 1}`}</span>
                 <h3 className="text-[15px] font-bold text-grey-900 mt-1">{team.name}</h3>
-                <p className="text-[12px] text-grey-700 leading-relaxed mt-1">{team.desc}</p>
+                <p className="text-[12px] text-grey-700 leading-relaxed mt-1 whitespace-pre-line break-keep">{team.desc}</p>
               </div>
             ))}
           </div>

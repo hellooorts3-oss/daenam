@@ -73,7 +73,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="CONTACT"
         title="고객센터"
-        description="무료 상담과 견적 문의를 남겨주시면 12년 경력의 대남에너지 전문가가 빠르게 답변드립니다."
+        description={"무료 상담과 견적 문의를 남겨주시면\n12년 경력의 대남에너지 전문가가 빠르게 답변드립니다."}
         image="/09.jpg"
         imageAlt="대남에너지 태양광 발전 현장"
       />
@@ -91,7 +91,7 @@ export default function ContactPage() {
               지금 대남에너지와{"\n"}상담해보세요
             </h2>
 
-            <p className="text-grey-700 text-base leading-relaxed">
+            <p className="text-grey-700 text-base leading-relaxed whitespace-pre-line">
               사업타당성 검토부터 인허가, 시공·계통연계, 사후 유지관리까지.{"\n"}
               12년 경력의 에너지 전문가가 모든 과정을 책임지고 안내해 드립니다.
             </p>

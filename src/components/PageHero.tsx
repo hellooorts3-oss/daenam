@@ -54,13 +54,13 @@ export default function PageHero({ eyebrow, title, description, image, imageAlt 
             {eyebrow}
           </span>
           <h1
-            className="animate-rise text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight whitespace-pre-line drop-shadow-sm"
+            className="animate-rise text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight whitespace-pre-line break-keep drop-shadow-sm"
             style={{ animationDelay: "0.15s" }}
           >
             {title}
           </h1>
           <p
-            className="animate-rise text-white/85 text-base md:text-lg leading-relaxed whitespace-pre-line"
+            className="animate-rise text-white/85 text-base md:text-lg leading-relaxed whitespace-pre-line break-keep"
             style={{ animationDelay: "0.28s" }}
           >
             {description}

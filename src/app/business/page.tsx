@@ -34,7 +34,7 @@ const businessModels: BusinessModel[] = [
     imageAlt: "공장 지붕에 설치된 RPS 대규모 태양광 발전 설비",
     title: "RPS 발전사업",
     summary:
-      "발전사업자의 신재생에너지 의무 공급을 통해 시장 확대와 기술 발전을 촉진하는 제도입니다. 대규모 발전 설비로 안정적인 장기 수익을 만들어드립니다.",
+      "발전사업자의 신재생에너지 의무 공급을 통해 시장 확대와 기술 발전을 촉진하는 제도입니다.\n대규모 발전 설비로 안정적인 장기 수익을 만들어드립니다.",
     concept: [
       "2012년 도입, 의무 공급량 지속 확대",
       "대규모 발전사업자 대상",
@@ -57,7 +57,7 @@ const businessModels: BusinessModel[] = [
     imageAlt: "기업 건물 지붕에 설치된 자가용 PPA 태양광 모듈",
     title: "자가용 PPA",
     summary:
-      "기업이 직접 생산한 태양광 전기를 사용하여 전기요금을 절감하고 친환경 경영을 실현하는 방안입니다. 초기 투자 부담 없이 RE100에 다가가세요.",
+      "기업이 직접 생산한 태양광 전기를 사용하여 전기요금을 절감하고 친환경 경영을 실현하는 방안입니다.\n초기 투자 부담 없이 RE100에 다가가세요.",
     concept: [
       "자체 태양광 설비 설치",
       "생산 전력 자가 소비",
@@ -80,7 +80,7 @@ const businessModels: BusinessModel[] = [
     imageAlt: "유휴 지붕을 활용한 지붕임대 태양광 발전 단지",
     title: "지붕임대사업",
     summary:
-      "공장·창고의 유휴 지붕을 임대하여 초기 투자 비용 없이 안정적인 임대료를 받는 사업 모델입니다. 임대인과 사업자 모두에게 이익이 됩니다.",
+      "공장·창고의 유휴 지붕을 임대하여 초기 투자 비용 없이 안정적인 임대료를 받는 사업 모델입니다.\n임대인과 사업자 모두에게 이익이 됩니다.",
     concept: [
       "유휴 공간 활용으로 추가 수익 창출",
       "초기 투자 비용 없이 안정적 임대료",
@@ -171,7 +171,7 @@ export default function BusinessPage() {
                   </div>
                 </div>
 
-                <p className="text-grey-700 text-[15px] leading-relaxed" data-reveal style={{ transitionDelay: "0.24s" }}>{model.summary}</p>
+                <p className="text-grey-700 text-[15px] leading-relaxed whitespace-pre-line break-keep" data-reveal style={{ transitionDelay: "0.24s" }}>{model.summary}</p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2" data-reveal style={{ transitionDelay: "0.36s" }}>
                   <div className="flex flex-col gap-3">
@@ -263,9 +263,8 @@ export default function BusinessPage() {
                 <h3 className="text-xl md:text-2xl font-bold text-grey-900 leading-tight">스마트 O&M (사후 유지관리)</h3>
               </div>
             </div>
-            <p className="text-grey-700 text-[15px] leading-relaxed">
-              태양광은 시공만큼이나 유지가 수익을 좌우합니다. 대남에너지 전담 유지보수팀이 실시간 발전량 모니터링과
-              정기 점검으로 20년 발전 수명 동안 발전 손실을 최소화합니다.
+            <p className="text-grey-700 text-[15px] leading-relaxed whitespace-pre-line break-keep">
+              {"태양광은 시공만큼이나 유지가 수익을 좌우합니다.\n대남에너지 전담 유지보수팀이 실시간 발전량 모니터링과 정기 점검으로\n20년 발전 수명 동안 발전 손실을 최소화합니다."}
             </p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-[14px] text-grey-700">
               <li className="flex items-center gap-2">

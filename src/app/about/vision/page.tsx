@@ -14,17 +14,17 @@ interface Vision {
 const visions: Vision[] = [
   {
     title: "종합 에너지 솔루션 기업으로 성장",
-    desc: "RPS 발전사업부터 자가용 PPA, 지붕임대까지 태양광 전 분야를 아우르는 종합 솔루션을 제공합니다.",
+    desc: "RPS 발전사업부터 자가용 PPA, 지붕임대까지\n태양광 전 분야를 아우르는 종합 솔루션을 제공합니다.",
     icon: <Zap className="w-6 h-6" />,
   },
   {
     title: "ESG 경영 선도",
-    desc: "투명한 사업 운영과 책임 있는 시공으로 고객과 사회가 함께 신뢰할 수 있는 ESG 경영을 실천합니다.",
+    desc: "투명한 사업 운영과 책임 있는 시공으로 고객과 사회가 함께\n신뢰할 수 있는 ESG 경영을 실천합니다.",
     icon: <ShieldCheck className="w-6 h-6" />,
   },
   {
     title: "탄소중립 실현에 기여",
-    desc: "신재생에너지 보급 확대를 통해 RE100과 국가 탄소중립 목표 달성에 앞장섭니다.",
+    desc: "신재생에너지 보급 확대를 통해 RE100과\n국가 탄소중립 목표 달성에 앞장섭니다.",
     icon: <Leaf className="w-6 h-6" />,
   },
 ];
@@ -37,7 +37,7 @@ export default function VisionPage() {
       <PageHero
         eyebrow="VISION"
         title="대남에너지의 비전"
-        description="태양광 전 분야를 아우르는 종합 에너지 솔루션 기업으로서, ESG 경영과 탄소중립 실현에 앞장섭니다."
+        description={"태양광 전 분야를 아우르는 종합 에너지 솔루션 기업으로서,\nESG 경영과 탄소중립 실현에 앞장섭니다."}
         image="/03.jpg"
         imageAlt="대남에너지 태양광 발전 단지"
       />
@@ -55,7 +55,7 @@ export default function VisionPage() {
                 {vision.icon}
               </div>
               <h3 className="text-lg font-bold text-grey-900 leading-snug">{vision.title}</h3>
-              <p className="text-grey-700 leading-relaxed text-[15px]">{vision.desc}</p>
+              <p className="text-grey-700 leading-relaxed text-[15px] whitespace-pre-line">{vision.desc}</p>
             </div>
           ))}
         </div>
