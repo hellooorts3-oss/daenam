@@ -116,6 +116,7 @@ export default function HistoryPage() {
                         alt={`${item.year} 대남에너지 태양광 시공 현장`}
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
+                        quality={90}
                         className="object-cover"
                       />
                     </div>

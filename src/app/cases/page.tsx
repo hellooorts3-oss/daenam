@@ -102,27 +102,24 @@ export default function CasesPage() {
       />
 
       <div className="container-inner py-[90px]">
-        {/* Case Studies Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Case Studies Grid — 카드 박스·라운딩 없이 이미지 갤러리 형태 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
           {caseStudiesData.map((item) => (
-            <div
-              key={item.id}
-              className="card-lift group bg-grey-50 rounded-2xl overflow-hidden border border-grey-100 hover:border-grey-200 flex flex-col"
-              data-reveal
-            >
-              {/* Image */}
-              <div className="relative h-52 w-full overflow-hidden">
+            <div key={item.id} className="group flex flex-col" data-reveal>
+              {/* Image — 4:3 비율, object-cover로 화질 손상 없이 정렬 */}
+              <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <Image
                   src={item.image}
                   alt={`${item.title} 태양광 시공 현장`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  quality={90}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
 
               {/* Body Content */}
-              <div className="p-6 flex-1 flex flex-col gap-2.5">
+              <div className="pt-4 flex flex-col gap-2">
                 <h3 className="text-lg font-bold text-grey-900 leading-snug break-keep">{item.title}</h3>
                 <p className="text-[14px] text-[#75787b] leading-relaxed">
                   {item.desc}

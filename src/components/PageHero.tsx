@@ -31,6 +31,7 @@ export default function PageHero({ eyebrow, title, description, image, imageAlt 
             alt={imageAlt ?? title}
             fill
             sizes="100vw"
+            quality={90}
             className="object-cover"
             preload
           />

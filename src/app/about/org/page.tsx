@@ -81,8 +81,8 @@ export default function OrgPage() {
             <div
               key={team.name}
               data-reveal
-              style={{ transitionDelay: `${index * 0.08}s` }}
-              className="group relative bg-white rounded-2xl border border-grey-100 flex flex-col overflow-hidden hover:border-toss-blue/30 hover:shadow-lg hover:shadow-toss-blue/10 hover:-translate-y-1 transition-all duration-300"
+              className="reveal-up group relative bg-white rounded-2xl border border-grey-100 flex flex-col overflow-hidden hover:border-toss-blue/30 hover:shadow-lg hover:shadow-toss-blue/10 hover:-translate-y-1 transition-all duration-300"
+              style={{ transitionDelay: `${0.2 + index * 0.15}s` }}
             >
               {/* 이미지 헤더 */}
               <div className="relative h-32 w-full overflow-hidden">
@@ -91,6 +91,7 @@ export default function OrgPage() {
                   alt={`${team.name} 관련 이미지`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  quality={90}
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>

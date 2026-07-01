@@ -4,98 +4,105 @@ import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import {
+  Activity,
+  Wrench,
+  ClipboardCheck,
+  Siren,
+  Calendar,
   Building2,
-  Home as HomeIcon,
-  ShieldCheck,
+  FileText,
+  BarChart3,
+  ScrollText,
+  Handshake,
+  TrendingUp,
+  Leaf,
+  Sun,
   Zap,
-  Check,
-  ChevronLeft,
-  ChevronRight,
-  Pause,
-  Play
+  ArrowRightLeft,
+  CalendarClock,
+  Wallet,
+  BadgeCheck,
+  LayoutGrid,
+  Home,
+  MapPin,
+  Landmark,
+  FileCheck
 } from "lucide-react";
+
+interface IconItem {
+  icon: React.ElementType;
+  text: string;
+}
 
 interface BusinessModel {
   key: string;
-  icon: React.ReactNode;
-  accent: string;
-  iconBg: string;
   image: string;
   imageAlt: string;
   title: string;
   summary: string;
-  concept: string[];
-  benefits: string[];
+  concept: IconItem[];
+  benefits: IconItem[];
 }
 
 const businessModels: BusinessModel[] = [
   {
     key: "rps",
-    icon: <Zap className="w-6 h-6" />,
-    accent: "text-toss-blue",
-    iconBg: "bg-toss-blue-light text-toss-blue",
     image: "/images/factory-solar.png",
     imageAlt: "공장 지붕에 설치된 RPS 대규모 태양광 발전 설비",
     title: "RPS 발전사업",
     summary:
       "발전사업자의 신재생에너지 의무 공급을 통해 시장 확대와 기술 발전을 촉진하는 제도입니다.\n대규모 발전 설비로 안정적인 장기 수익을 만들어드립니다.",
     concept: [
-      "2012년 도입, 의무 공급량 지속 확대",
-      "대규모 발전사업자 대상",
-      "연간 총 발전량 중 일정 비율을 신재생에너지로 공급 의무화",
-      "2024년 의무비율 12.5%",
+      { icon: Calendar, text: "2012년 도입, 의무 공급량 지속 확대" },
+      { icon: Building2, text: "대규모 발전사업자 대상" },
+      { icon: FileText, text: "신재생에너지 공급 의무화" },
+      { icon: BarChart3, text: "2024년 의무비율 12.5%" },
     ],
     benefits: [
-      "REC 발급 및 거래 참여",
-      "장기 고정가격 계약 가능",
-      "안정적 수익 창출 기회",
-      "친환경 기업 이미지 제고",
+      { icon: ScrollText, text: "REC 발급 및 거래 참여" },
+      { icon: Handshake, text: "장기 고정가격 계약 가능" },
+      { icon: TrendingUp, text: "안정적 수익 창출 기회" },
+      { icon: Leaf, text: "친환경 기업 이미지 제고" },
     ],
   },
   {
     key: "ppa",
-    icon: <Building2 className="w-6 h-6" />,
-    accent: "text-toss-blue",
-    iconBg: "bg-toss-blue-light text-toss-blue",
     image: "/images/residential-solar.png",
     imageAlt: "기업 건물 지붕에 설치된 자가용 PPA 태양광 모듈",
     title: "자가용 PPA",
     summary:
       "기업이 직접 생산한 태양광 전기를 사용하여 전기요금을 절감하고 친환경 경영을 실현하는 방안입니다.\n초기 투자 부담 없이 RE100에 다가가세요.",
     concept: [
-      "자체 태양광 설비 설치",
-      "생산 전력 자가 소비",
-      "잉여 전력 한전 판매",
-      "20년 장기계약 · 초기 투자 부담 없음",
+      { icon: Sun, text: "자체 태양광 설비 설치" },
+      { icon: Zap, text: "생산 전력 자가 소비" },
+      { icon: ArrowRightLeft, text: "잉여 전력 한전 판매" },
+      { icon: CalendarClock, text: "20년 장기계약 · 초기 투자 부담 없음" },
     ],
     benefits: [
-      "전기요금 절감 · 안정적 전력공급",
-      "탄소배출 감소 · 에너지 독립성",
-      "RE100 달성 기여 · 그린 마케팅 효과",
-      "유휴 공간 활용",
+      { icon: Wallet, text: "전기요금 절감 · 안정적 전력공급" },
+      { icon: Leaf, text: "탄소배출 감소 · 에너지 독립성" },
+      { icon: BadgeCheck, text: "RE100 달성 기여 · 그린 마케팅 효과" },
+      { icon: LayoutGrid, text: "유휴 공간 활용" },
     ],
   },
   {
     key: "roof",
-    icon: <HomeIcon className="w-6 h-6" />,
-    accent: "text-toss-blue",
-    iconBg: "bg-toss-blue-light text-toss-blue",
     image: "/images/ground-solar.png",
     imageAlt: "유휴 지붕을 활용한 지붕임대 태양광 발전 단지",
     title: "지붕임대사업",
     summary:
       "공장·창고의 유휴 지붕을 임대하여 초기 투자 비용 없이 안정적인 임대료를 받는 사업 모델입니다.\n임대인과 사업자 모두에게 이익이 됩니다.",
     concept: [
-      "유휴 공간 활용으로 추가 수익 창출",
-      "초기 투자 비용 없이 안정적 임대료",
-      "건물 가치 상승 및 에너지 효율 개선",
-      "친환경 이미지 제고",
+      { icon: LayoutGrid, text: "유휴 공간 활용 추가 수익" },
+      { icon: Wallet, text: "초기 투자 없이 임대료" },
+      { icon: Building2, text: "건물 가치·효율 개선" },
+      { icon: Leaf, text: "친환경 이미지 제고" },
     ],
     benefits: [
-      "임대인: 안정적 임대 수익 확보",
-      "사업자: 부지 확보 용이, 비용 절감",
-      "양측 모두 정부 지원 혜택 가능",
-      "장기 계약으로 안정적 사업 운영",
+      { icon: Home, text: "임대인: 안정적 임대 수익 확보" },
+      { icon: MapPin, text: "사업자: 부지 확보 용이, 비용 절감" },
+      { icon: Landmark, text: "양측 모두 정부 지원 혜택 가능" },
+      { icon: FileCheck, text: "장기 계약으로 안정적 사업 운영" },
     ],
   },
 ];
@@ -162,10 +169,60 @@ export default function BusinessPage() {
     setProcActive(closest);
   };
 
-  // 자동 슬라이드 (호버/포커스 시 일시정지)
+  // ===== 마우스 드래그로 좌우 이동 (drag-to-scroll) =====
+  const dragRef = useRef({ down: false, startX: 0, startScroll: 0, moved: false });
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType !== "mouse") return; // 터치는 네이티브 스크롤 사용
+    const el = trackRef.current;
+    if (!el) return;
+    dragRef.current = { down: true, startX: e.clientX, startScroll: el.scrollLeft, moved: false };
+    // 드래그 중엔 강제 스냅·부드러운 스크롤을 꺼서 끊김 없이 따라오게 함
+    el.style.scrollSnapType = "none";
+    el.style.scrollBehavior = "auto";
+    setProcPaused(true);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    const el = trackRef.current;
+    const d = dragRef.current;
+    if (!el || !d.down) return;
+    const dx = e.clientX - d.startX;
+    if (Math.abs(dx) > 4) d.moved = true;
+    el.scrollLeft = d.startScroll - dx;
+  };
+
+  const handlePointerUp = () => {
+    const el = trackRef.current;
+    const d = dragRef.current;
+    if (!d.down || !el) return;
+    d.down = false;
+    // 스냅·부드러운 스크롤 복구 후 가장 가까운 카드로 정렬
+    el.style.scrollSnapType = "";
+    el.style.scrollBehavior = "";
+    // 가장 가까운 카드로 스냅
+    const center = el.scrollLeft + el.clientWidth / 2;
+    let closest = 0;
+    let min = Infinity;
+    Array.from(el.children).forEach((child, i) => {
+      const c = child as HTMLElement;
+      const mid = c.offsetLeft + c.offsetWidth / 2;
+      const dist = Math.abs(mid - center);
+      if (dist < min) {
+        min = dist;
+        closest = i;
+      }
+    });
+    setProcActive(closest);
+    scrollToStep(closest);
+    setProcPaused(false);
+  };
+
+  // 자동 슬라이드 (호버/포커스/드래그 시 일시정지)
   useEffect(() => {
     if (procPaused) return;
     const id = setInterval(() => {
+      if (dragRef.current.down) return;
       setProcActive((prev) => {
         const next = (prev + 1) % installSteps.length;
         scrollToStep(next);
@@ -204,47 +261,51 @@ export default function BusinessPage() {
                   alt={model.imageAlt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 33vw"
+                  quality={90}
                   className="object-cover"
                 />
               </div>
 
               {/* Content */}
               <div className="lg:col-span-8 p-8 md:p-10 flex flex-col justify-center gap-6">
-                <div className="flex items-center gap-3" data-reveal style={{ transitionDelay: "0.12s" }}>
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-sm ${model.iconBg}`}>
-                    {model.icon}
-                  </div>
-                  <div>
-                    <span className="text-[12px] font-bold text-grey-500">BUSINESS {String(index + 1).padStart(2, "0")}</span>
-                    <h3 className="text-xl md:text-2xl font-bold text-grey-900 leading-tight">{model.title}</h3>
-                  </div>
+                {/* 라벨 + 제목 (좌측 아이콘 제거) */}
+                <div data-reveal style={{ transitionDelay: "0.12s" }}>
+                  <span className="text-[13px] font-bold text-toss-blue tracking-wider">BUSINESS {String(index + 1).padStart(2, "0")}</span>
+                  <h3 className="text-2xl md:text-[32px] font-bold text-grey-900 leading-tight mt-1.5">{model.title}</h3>
                 </div>
 
                 <p className="text-[#75787b] text-[15px] leading-relaxed whitespace-pre-line break-keep" data-reveal style={{ transitionDelay: "0.24s" }}>{model.summary}</p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2" data-reveal style={{ transitionDelay: "0.36s" }}>
-                  <div className="flex flex-col gap-3">
-                    <span className="text-[13px] font-bold text-grey-900">개념</span>
-                    <ul className="flex flex-col gap-2">
-                      {model.concept.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2 text-[14px] text-grey-700 leading-relaxed">
-                          <Check className={`w-4 h-4 shrink-0 mt-0.5 ${model.accent}`} />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="flex flex-col gap-3">
-                    <span className="text-[13px] font-bold text-grey-900">장점 및 특징</span>
-                    <ul className="flex flex-col gap-2">
-                      {model.benefits.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2 text-[14px] text-grey-700 leading-relaxed">
-                          <Check className={`w-4 h-4 shrink-0 mt-0.5 ${model.accent}`} />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                {/* 개념 — 아이콘 알약(pill) 가로 나열 */}
+                <div className="flex flex-wrap gap-2.5" data-reveal style={{ transitionDelay: "0.36s" }}>
+                  {model.concept.map((c, i) => {
+                    const Icon = c.icon;
+                    return (
+                      <span
+                        key={i}
+                        className="inline-flex items-center gap-2 pl-3.5 pr-4 py-2 rounded-full bg-[#f1f6fc] text-[13px] font-semibold text-grey-700 break-keep"
+                      >
+                        <Icon className="w-4 h-4 text-toss-blue shrink-0" />
+                        {c.text}
+                      </span>
+                    );
+                  })}
+                </div>
+
+                {/* 장점 및 특징 — 큰 아이콘 + 연한 그레이 세로 구분선 */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 border-t border-grey-100 pt-6" data-reveal style={{ transitionDelay: "0.48s" }}>
+                  {model.benefits.map((b, i) => {
+                    const Icon = b.icon;
+                    return (
+                      <div
+                        key={i}
+                        className={`flex flex-col items-center text-center gap-3 px-2 py-2 ${i > 0 ? "sm:border-l sm:border-grey-100" : ""}`}
+                      >
+                        <Icon className="w-8 h-8 text-toss-blue" strokeWidth={1.5} />
+                        <span className="text-[13px] font-semibold text-grey-800 leading-snug break-keep max-w-[6.5rem]">{b.text}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -259,40 +320,39 @@ export default function BusinessPage() {
               alt="태양광 발전 설비를 점검하는 전문 유지보수팀 엔지니어"
               fill
               sizes="(max-width: 1024px) 100vw, 33vw"
+              quality={90}
               className="object-cover"
             />
           </div>
-          <div className="lg:col-span-8 p-8 md:p-10 flex flex-col gap-6">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-sm bg-toss-blue-light text-toss-blue">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
-              <div>
-                <span className="text-[12px] font-bold text-grey-500">AFTER-SERVICE</span>
-                <h3 className="text-xl md:text-2xl font-bold text-grey-900 leading-tight">스마트 O&M (사후 유지관리)</h3>
-              </div>
+          <div className="lg:col-span-8 p-8 md:p-10 flex flex-col justify-center gap-6">
+            {/* 라벨 + 제목 (좌측 아이콘 제거) */}
+            <div>
+              <span className="text-[13px] font-bold text-toss-blue tracking-wider">AFTER-SERVICE</span>
+              <h3 className="text-2xl md:text-[32px] font-bold text-grey-900 leading-tight mt-1.5">스마트 O&M (사후 유지관리)</h3>
             </div>
             <p className="text-[#75787b] text-[15px] leading-relaxed whitespace-pre-line break-keep">
               {"태양광은 시공만큼이나 유지가 수익을 좌우합니다.\n대남에너지 전담 유지보수팀이 실시간 발전량 모니터링과 정기 점검으로\n20년 발전 수명 동안 발전 손실을 최소화합니다."}
             </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-[14px] text-grey-700">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-toss-blue shrink-0"></span>
-                24시간 가동 모니터링 경보
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-toss-blue shrink-0"></span>
-                인버터 점검 및 모듈 세척
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-toss-blue shrink-0"></span>
-                정기 정밀 안전 진단 리포트
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-toss-blue shrink-0"></span>
-                고장 감지 즉시 현장 대응
-              </li>
-            </ul>
+            {/* 주요 서비스 — 큰 아이콘 + 연한 그레이 세로 구분선 */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 border-t border-grey-100 pt-6">
+              {[
+                { icon: Activity, text: "24시간 가동 모니터링 경보" },
+                { icon: Wrench, text: "인버터 점검 및 모듈 세척" },
+                { icon: ClipboardCheck, text: "정기 정밀 안전 진단 리포트" },
+                { icon: Siren, text: "고장 감지 즉시 현장 대응" },
+              ].map((f, i) => {
+                const Icon = f.icon;
+                return (
+                  <div
+                    key={i}
+                    className={`flex flex-col items-center text-center gap-3 px-2 py-2 ${i > 0 ? "sm:border-l sm:border-grey-100" : ""}`}
+                  >
+                    <Icon className="w-8 h-8 text-toss-blue" strokeWidth={1.5} />
+                    <span className="text-[13px] font-semibold text-grey-800 leading-snug break-keep max-w-[6.5rem]">{f.text}</span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
@@ -306,6 +366,7 @@ export default function BusinessPage() {
             alt="대남에너지 태양광 발전 설치 현장"
             fill
             sizes="100vw"
+            quality={90}
             className="object-cover"
           />
           <div className="absolute inset-0 bg-slate-950/20"></div>
@@ -327,7 +388,12 @@ export default function BusinessPage() {
           <div
             ref={trackRef}
             onScroll={handleProcScroll}
-            className="flex items-stretch gap-5 overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth px-[calc(50vw_-_150px)] md:px-[calc(50vw_-_170px)] py-8"
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerLeave={handlePointerUp}
+            onDragStart={(e) => e.preventDefault()}
+            className="flex items-stretch gap-5 overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth px-[calc(50vw_-_150px)] md:px-[calc(50vw_-_170px)] py-8 cursor-grab active:cursor-grabbing select-none"
           >
             {installSteps.map((step, i) => {
               const isActive = procActive === i;
@@ -336,6 +402,7 @@ export default function BusinessPage() {
                   key={i}
                   type="button"
                   onClick={() => {
+                    if (dragRef.current.moved) return; // 드래그였으면 클릭 무시
                     setProcActive(i);
                     scrollToStep(i);
                   }}
@@ -361,47 +428,13 @@ export default function BusinessPage() {
             })}
           </div>
 
-          {/* 진행 바 + 컨트롤 */}
-          <div className="container-inner mt-4 flex items-center gap-5">
-            <div className="relative flex-1 h-1 rounded-full bg-grey-200 overflow-hidden">
+          {/* 진행 바 */}
+          <div className="container-inner mt-4">
+            <div className="relative h-1 rounded-full bg-grey-200 overflow-hidden">
               <div
                 className="absolute inset-y-0 left-0 rounded-full bg-toss-blue transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
                 style={{ width: `${((procActive + 1) / installSteps.length) * 100}%` }}
               ></div>
-            </div>
-            <div className="flex items-center gap-2 shrink-0">
-              <button
-                type="button"
-                aria-label="이전 단계"
-                onClick={() => {
-                  const idx = (procActive - 1 + installSteps.length) % installSteps.length;
-                  setProcActive(idx);
-                  scrollToStep(idx);
-                }}
-                className="w-9 h-9 rounded-full border border-grey-200 text-grey-700 flex items-center justify-center hover:border-toss-blue hover:text-toss-blue transition-colors"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                type="button"
-                aria-label="다음 단계"
-                onClick={() => {
-                  const idx = (procActive + 1) % installSteps.length;
-                  setProcActive(idx);
-                  scrollToStep(idx);
-                }}
-                className="w-9 h-9 rounded-full border border-grey-200 text-grey-700 flex items-center justify-center hover:border-toss-blue hover:text-toss-blue transition-colors"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-              <button
-                type="button"
-                aria-label={procPaused ? "자동 재생" : "일시정지"}
-                onClick={() => setProcPaused((p) => !p)}
-                className="w-9 h-9 rounded-full border border-grey-200 text-grey-700 flex items-center justify-center hover:border-toss-blue hover:text-toss-blue transition-colors"
-              >
-                {procPaused ? <Play className="w-4 h-4" /> : <Pause className="w-4 h-4" />}
-              </button>
             </div>
           </div>
         </div>

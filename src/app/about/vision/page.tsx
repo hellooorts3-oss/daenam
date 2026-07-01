@@ -111,6 +111,7 @@ export default function VisionPage() {
                 alt={`${vision.title} 관련 이미지`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={90}
                 className={`object-cover transition-opacity duration-700 ease-out ${
                   active === i ? "opacity-100" : "opacity-0"
                 }`}

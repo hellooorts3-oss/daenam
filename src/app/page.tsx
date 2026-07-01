@@ -65,6 +65,7 @@ export default function Home() {
           alt="공장 지붕 위에 설치된 대남에너지 태양광 발전 설비"
           fill
           sizes="100vw"
+          quality={90}
           className="object-cover animate-ken-burns"
           preload
         />
@@ -197,6 +198,7 @@ export default function Home() {
                   alt=""
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
+                  quality={90}
                   className="object-cover opacity-0 scale-105 group-hover:opacity-100 group-hover:scale-100 transition-all duration-[600ms] ease-out"
                 />
                 {/* 호버 시 일정한 블랙 반투명 오버레이 (가독성) */}
@@ -229,6 +231,7 @@ export default function Home() {
               alt="유휴 부지를 활용한 대규모 태양광 발전 단지"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
+              quality={90}
               className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent"></div>
