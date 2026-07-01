@@ -46,7 +46,7 @@ export default function RootLayout({
       </head>
       <body className="bg-white text-grey-900 font-sans antialiased selection:bg-toss-blue-light selection:text-toss-blue flex flex-col min-h-screen">
         <Header />
-        <main className="flex-1 flex flex-col pt-18">{children}</main>
+        <main className="flex-1 flex flex-col">{children}</main>
         <Footer />
         <FloatingButtons />
       </body>

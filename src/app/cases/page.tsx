@@ -124,7 +124,7 @@ export default function CasesPage() {
               {/* Body Content */}
               <div className="p-6 flex-1 flex flex-col gap-2.5">
                 <h3 className="text-lg font-bold text-grey-900 leading-snug break-keep">{item.title}</h3>
-                <p className="text-[14px] text-grey-700 leading-relaxed">
+                <p className="text-[14px] text-[#75787b] leading-relaxed">
                   {item.desc}
                 </p>
               </div>

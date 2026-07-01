@@ -124,6 +124,24 @@ html:not(.js-ready) [data-reveal] {
   opacity: 0;
   animation: riseIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
+/* transform을 쓰지 않는 opacity 전용 등장 (호버 scale/translate와 충돌 없음, 리렌더 안전) */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+/* Ken Burns — 배경 이미지가 천천히 확대/축소 */
+@keyframes kenBurns {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+.animate-ken-burns {
+  animation: kenBurns 22s ease-in-out infinite;
+  will-change: transform;
+}
 
 /* ===== Premium hover helpers ===== */
 .card-lift {
@@ -155,6 +173,8 @@ html:not(.js-ready) [data-reveal] {
 @media (prefers-reduced-motion: reduce) {
   html.js-ready [data-reveal],
   .animate-rise,
+  .animate-fade,
+  .animate-ken-burns,
   .animate-float-slow,
   .animate-scale-in,
   .animate-spin-slow,
@@ -166,6 +186,15 @@ html:not(.js-ready) [data-reveal] {
     filter: none !important;
   }
   .btn-sheen::after { display: none; }
+}
+
+/* 캐러셀 등 커스텀 진행바를 쓰는 스크롤 영역 — 네이티브 스크롤바 숨김 */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 /* Utility to ensure standard horizontal margins in sections */

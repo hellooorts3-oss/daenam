@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import {
@@ -8,7 +8,11 @@ import {
   Home as HomeIcon,
   ShieldCheck,
   Zap,
-  Check
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  Pause,
+  Play
 } from "lucide-react";
 
 interface BusinessModel {
@@ -126,6 +130,51 @@ export default function BusinessPage() {
     return () => observer.disconnect();
   }, []);
 
+  // ===== 설치 절차 캐러셀 (중앙 강조) =====
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [procActive, setProcActive] = useState(0);
+  const [procPaused, setProcPaused] = useState(false);
+
+  const scrollToStep = (i: number) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const child = el.children[i] as HTMLElement | undefined;
+    if (!child) return;
+    const left = child.offsetLeft - (el.clientWidth - child.offsetWidth) / 2;
+    el.scrollTo({ left, behavior: "smooth" });
+  };
+
+  const handleProcScroll = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    const center = el.scrollLeft + el.clientWidth / 2;
+    let closest = 0;
+    let min = Infinity;
+    Array.from(el.children).forEach((child, i) => {
+      const c = child as HTMLElement;
+      const mid = c.offsetLeft + c.offsetWidth / 2;
+      const d = Math.abs(mid - center);
+      if (d < min) {
+        min = d;
+        closest = i;
+      }
+    });
+    setProcActive(closest);
+  };
+
+  // 자동 슬라이드 (호버/포커스 시 일시정지)
+  useEffect(() => {
+    if (procPaused) return;
+    const id = setInterval(() => {
+      setProcActive((prev) => {
+        const next = (prev + 1) % installSteps.length;
+        scrollToStep(next);
+        return next;
+      });
+    }, 2500);
+    return () => clearInterval(id);
+  }, [procPaused]);
+
   return (
     <div className="bg-grey-50">
       {/* Common Category Hero — 풀폭 배경, 콘텐츠는 1400px 정렬 */}
@@ -145,7 +194,7 @@ export default function BusinessPage() {
             <div
               key={model.key}
               id={model.key}
-              className="scroll-mt-24 bg-white rounded-3xl overflow-hidden shadow-sm border border-grey-100 grid grid-cols-1 lg:grid-cols-12 hover:shadow-md transition-all duration-300"
+              className="scroll-mt-24 bg-white rounded-3xl overflow-hidden shadow-sm border border-grey-100 grid grid-cols-1 lg:grid-cols-12 lg:min-h-[440px] hover:shadow-md transition-all duration-300"
               data-reveal
             >
               {/* Image */}
@@ -160,7 +209,7 @@ export default function BusinessPage() {
               </div>
 
               {/* Content */}
-              <div className="lg:col-span-8 p-8 md:p-10 flex flex-col gap-6">
+              <div className="lg:col-span-8 p-8 md:p-10 flex flex-col justify-center gap-6">
                 <div className="flex items-center gap-3" data-reveal style={{ transitionDelay: "0.12s" }}>
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center shadow-sm ${model.iconBg}`}>
                     {model.icon}
@@ -171,7 +220,7 @@ export default function BusinessPage() {
                   </div>
                 </div>
 
-                <p className="text-grey-700 text-[15px] leading-relaxed whitespace-pre-line break-keep" data-reveal style={{ transitionDelay: "0.24s" }}>{model.summary}</p>
+                <p className="text-[#75787b] text-[15px] leading-relaxed whitespace-pre-line break-keep" data-reveal style={{ transitionDelay: "0.24s" }}>{model.summary}</p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2" data-reveal style={{ transitionDelay: "0.36s" }}>
                   <div className="flex flex-col gap-3">
@@ -202,49 +251,9 @@ export default function BusinessPage() {
           ))}
         </div>
 
-        {/* Install Procedure — 세로 스텝퍼 */}
-        <div className="mb-20">
-          <div className="text-center max-w-2xl mx-auto mb-14" data-reveal>
-            <span className="text-[13px] text-toss-blue font-bold tracking-wider uppercase">PROCESS</span>
-            <h2 className="text-2xl md:text-3xl font-bold text-grey-900 mt-2 mb-3 tracking-tight">태양광 설치 절차 8단계</h2>
-            <p className="text-grey-700 leading-relaxed">
-              사업타당성 검토부터 가동·모니터링까지, 대남에너지가 전 과정을 책임지고 진행합니다.
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto flex flex-col">
-            {installSteps.map((step, index) => {
-              const isLast = index === installSteps.length - 1;
-              return (
-                <div
-                  key={index}
-                  className="relative flex gap-5 md:gap-8"
-                  data-reveal
-                  style={{ transitionDelay: `${index * 0.08}s` }}
-                >
-                  {/* Left rail: STEP 배지 + 연결선 */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-14 h-14 rounded-full bg-toss-blue text-white flex flex-col items-center justify-center shadow-md shadow-toss-blue/30 shrink-0 z-10">
-                      <span className="text-[9px] font-semibold tracking-[0.15em] text-white/70 leading-none">STEP</span>
-                      <span className="text-lg font-bold leading-none mt-0.5">{String(index + 1).padStart(2, "0")}</span>
-                    </div>
-                    {!isLast && <span className="w-0.5 flex-1 bg-grey-200 my-2 rounded-full"></span>}
-                  </div>
-
-                  {/* Content card */}
-                  <div className={`flex-1 ${isLast ? "" : "mb-5"} bg-white rounded-2xl border border-grey-100 p-6 md:p-7 hover:border-toss-blue/40 hover:shadow-md transition-all duration-300`}>
-                    <h3 className="text-lg font-bold text-grey-900">{step.title}</h3>
-                    <p className="text-grey-700 text-[15px] leading-relaxed mt-1.5">{step.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
         {/* O&M Support Band */}
-        <div id="om" className="scroll-mt-24 bg-white rounded-3xl overflow-hidden shadow-sm border border-grey-100 grid grid-cols-1 lg:grid-cols-12" data-reveal>
-          <div className="relative h-56 lg:h-auto lg:col-span-4 overflow-hidden">
+        <div id="om" className="scroll-mt-24 bg-white rounded-3xl overflow-hidden shadow-sm border border-grey-100 grid grid-cols-1 lg:grid-cols-12 lg:min-h-[440px]" data-reveal>
+          <div className="relative h-56 lg:h-auto lg:col-span-4 overflow-hidden lg:order-last">
             <Image
               src="/images/om-monitoring.png"
               alt="태양광 발전 설비를 점검하는 전문 유지보수팀 엔지니어"
@@ -263,7 +272,7 @@ export default function BusinessPage() {
                 <h3 className="text-xl md:text-2xl font-bold text-grey-900 leading-tight">스마트 O&M (사후 유지관리)</h3>
               </div>
             </div>
-            <p className="text-grey-700 text-[15px] leading-relaxed whitespace-pre-line break-keep">
+            <p className="text-[#75787b] text-[15px] leading-relaxed whitespace-pre-line break-keep">
               {"태양광은 시공만큼이나 유지가 수익을 좌우합니다.\n대남에너지 전담 유지보수팀이 실시간 발전량 모니터링과 정기 점검으로\n20년 발전 수명 동안 발전 손실을 최소화합니다."}
             </p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-[14px] text-grey-700">
@@ -287,6 +296,116 @@ export default function BusinessPage() {
           </div>
         </div>
       </div>
+
+      {/* Install Procedure — 풀블리드 이미지 + 걸친 텍스트 박스 + 중앙 강조 캐러셀 */}
+      <section className="bg-white border-y border-grey-100 overflow-hidden">
+        {/* 풀블리드 이미지 (화면 끝까지) */}
+        <div className="relative w-full h-[300px] md:h-[440px]">
+          <Image
+            src="/19b.jpg"
+            alt="대남에너지 태양광 발전 설치 현장"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-slate-950/20"></div>
+        </div>
+
+        {/* 이미지에 걸친 화이트 텍스트 박스 */}
+        <div className="container-inner">
+          <div className="relative z-10 mx-auto -mt-24 md:-mt-32 max-w-2xl bg-white rounded-2xl shadow-2xl shadow-slate-900/10 border border-grey-100 px-8 py-10 md:px-16 md:py-14 text-center" data-reveal>
+            <span className="text-[13px] text-toss-blue font-bold tracking-wider uppercase">PROCESS</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-grey-900 mt-2 mb-4 tracking-tight">태양광 설치 절차 8단계</h2>
+            <p className="text-[#75787b] leading-relaxed whitespace-pre-line break-keep">
+              사업타당성 검토부터 가동·모니터링까지,{"\n"}대남에너지가 전 과정을 책임지고 진행합니다.
+            </p>
+          </div>
+        </div>
+
+        {/* 풀블리드 절차 캐러셀 (중앙 카드 강조) */}
+        <div className="mt-14 md:mt-16 pb-[90px]">
+          <div
+            ref={trackRef}
+            onScroll={handleProcScroll}
+            className="flex items-stretch gap-5 overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth px-[calc(50vw_-_150px)] md:px-[calc(50vw_-_170px)] py-8"
+          >
+            {installSteps.map((step, i) => {
+              const isActive = procActive === i;
+              return (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => {
+                    setProcActive(i);
+                    scrollToStep(i);
+                  }}
+                  onMouseEnter={() => setProcPaused(true)}
+                  onMouseLeave={() => setProcPaused(false)}
+                  className={`snap-center shrink-0 w-[300px] md:w-[340px] text-left rounded-2xl border p-8 md:p-9 flex flex-col transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]
+                    ${
+                      isActive
+                        ? "scale-100 md:scale-[1.06] border-toss-blue bg-white shadow-xl shadow-toss-blue/15 opacity-100 z-10"
+                        : "scale-[0.92] border-grey-200 bg-white opacity-60 hover:opacity-90"
+                    }`}
+                >
+                  <span
+                    className={`inline-flex items-center justify-center w-12 h-12 rounded-xl font-extrabold text-[18px] transition-colors duration-300
+                      ${isActive ? "bg-toss-blue text-white" : "bg-toss-blue-light text-toss-blue"}`}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-[20px] font-bold text-grey-900 mt-5 break-keep">{step.title}</h3>
+                  <p className="text-[14px] text-[#75787b] leading-relaxed mt-2.5 break-keep">{step.desc}</p>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* 진행 바 + 컨트롤 */}
+          <div className="container-inner mt-4 flex items-center gap-5">
+            <div className="relative flex-1 h-1 rounded-full bg-grey-200 overflow-hidden">
+              <div
+                className="absolute inset-y-0 left-0 rounded-full bg-toss-blue transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                style={{ width: `${((procActive + 1) / installSteps.length) * 100}%` }}
+              ></div>
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                type="button"
+                aria-label="이전 단계"
+                onClick={() => {
+                  const idx = (procActive - 1 + installSteps.length) % installSteps.length;
+                  setProcActive(idx);
+                  scrollToStep(idx);
+                }}
+                className="w-9 h-9 rounded-full border border-grey-200 text-grey-700 flex items-center justify-center hover:border-toss-blue hover:text-toss-blue transition-colors"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                aria-label="다음 단계"
+                onClick={() => {
+                  const idx = (procActive + 1) % installSteps.length;
+                  setProcActive(idx);
+                  scrollToStep(idx);
+                }}
+                className="w-9 h-9 rounded-full border border-grey-200 text-grey-700 flex items-center justify-center hover:border-toss-blue hover:text-toss-blue transition-colors"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+              <button
+                type="button"
+                aria-label={procPaused ? "자동 재생" : "일시정지"}
+                onClick={() => setProcPaused((p) => !p)}
+                className="w-9 h-9 rounded-full border border-grey-200 text-grey-700 flex items-center justify-center hover:border-toss-blue hover:text-toss-blue transition-colors"
+              >
+                {procPaused ? <Play className="w-4 h-4" /> : <Pause className="w-4 h-4" />}
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

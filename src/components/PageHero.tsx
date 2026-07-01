@@ -45,7 +45,7 @@ export default function PageHero({ eyebrow, title, description, image, imageAlt 
       )}
 
       {/* 콘텐츠 (1400px 컨테이너 정렬) */}
-      <div className="container-inner relative z-10 py-24 md:py-32">
+      <div className="container-inner relative z-10 pt-36 md:pt-48 pb-28 md:pb-40">
         <div className="max-w-2xl flex flex-col gap-4">
           <span
             className="animate-rise inline-flex self-start items-center text-[13px] bg-white/15 backdrop-blur text-white font-bold px-3 py-1 rounded-full tracking-wider uppercase"

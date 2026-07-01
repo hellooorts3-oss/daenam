@@ -74,7 +74,7 @@ export default function AboutPage() {
             >
               <span className="text-[12px] font-bold text-toss-blue tracking-wider uppercase">{sec.eyebrow}</span>
               <h3 className="text-xl font-bold text-grey-900">{sec.title}</h3>
-              <p className="text-grey-700 text-[15px] leading-relaxed">{sec.desc}</p>
+              <p className="text-[#75787b] text-[15px] leading-relaxed">{sec.desc}</p>
               <span className="text-toss-blue font-semibold text-[14px] mt-auto pt-2 flex items-center gap-1">
                 바로가기 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>

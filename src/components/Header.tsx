@@ -30,6 +30,9 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  // 모든 페이지 첫 섹션(다크 히어로) 위 흰색 오버레이 모드 (스크롤 전, 모바일 메뉴 닫힘 시)
+  const whiteMode = !scrolled && !mobileMenuOpen;
+
   // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
@@ -63,7 +66,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="logo cursor-pointer flex items-center select-none" aria-label="대남에너지 DN energy 홈">
             <Image
-              src="/logo.png"
+              src={whiteMode ? "/logo-white.png" : "/logo.png"}
               alt="대남에너지 DN energy 로고"
               width={394}
               height={167}
@@ -84,7 +87,9 @@ export default function Header() {
                     <Link
                       href={item.href}
                       className={`flex items-center gap-1 text-[16px] md:text-[17px] font-medium transition-colors select-none ${
-                        isActive ? "text-toss-blue font-semibold" : "text-grey-700 hover:text-grey-900"
+                        isActive
+                          ? whiteMode ? "text-white font-semibold" : "text-toss-blue font-semibold"
+                          : whiteMode ? "text-white/70 hover:text-white" : "text-grey-700 hover:text-toss-blue"
                       }`}
                     >
                       {item.label}
@@ -124,7 +129,9 @@ export default function Header() {
                   key={item.href}
                   href={item.href}
                   className={`text-[16px] md:text-[17px] font-medium transition-colors select-none ${
-                    isActive ? "text-toss-blue font-semibold" : "text-grey-700 hover:text-grey-900"
+                    isActive
+                      ? whiteMode ? "text-white font-semibold" : "text-toss-blue font-semibold"
+                      : whiteMode ? "text-white/70 hover:text-white" : "text-grey-700 hover:text-toss-blue"
                   }`}
                 >
                   {item.label}
@@ -147,7 +154,7 @@ export default function Header() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-grey-700 hover:text-grey-900 focus:outline-none"
+              className={`p-2 focus:outline-none ${whiteMode ? "text-white" : "text-grey-700 hover:text-grey-900"}`}
               aria-label="메뉴 열기"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

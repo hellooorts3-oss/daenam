@@ -82,7 +82,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left Area: Company Details & Direct contacts */}
           <div className="lg:col-span-5 flex flex-col gap-6" data-reveal>
-            <div className="inline-flex self-start items-center gap-2 px-3 py-1 bg-amber-50 text-amber-600 rounded-full text-[13px] font-semibold">
+            <div className="inline-flex self-start items-center gap-2 px-3 py-1 bg-brand-green-light text-brand-green rounded-full text-[13px] font-semibold">
               <Clock className="w-3.5 h-3.5" />
               실시간 무료 상담 대기 중
             </div>
@@ -91,7 +91,7 @@ export default function ContactPage() {
               지금 대남에너지와{"\n"}상담해보세요
             </h2>
 
-            <p className="text-grey-700 text-base leading-relaxed whitespace-pre-line">
+            <p className="text-[#75787b] text-base leading-relaxed whitespace-pre-line">
               사업타당성 검토부터 인허가, 시공·계통연계, 사후 유지관리까지.{"\n"}
               12년 경력의 에너지 전문가가 모든 과정을 책임지고 안내해 드립니다.
             </p>
@@ -257,7 +257,7 @@ export default function ContactPage() {
             
             <div className="flex flex-col gap-2">
               <h4 className="text-2xl font-bold text-grey-900">상담 신청 완료</h4>
-              <p className="text-grey-700 text-[15px] leading-relaxed whitespace-pre-line">
+              <p className="text-[#75787b] text-[15px] leading-relaxed whitespace-pre-line">
                 성공적으로 접수되었습니다.{"\n"}
                 에너지 전문가가 남겨주신 연락처로 <strong>24시간 내에</strong> 정밀 발전 진단서와 친절한 안내 전화를 드리겠습니다.
               </p>
