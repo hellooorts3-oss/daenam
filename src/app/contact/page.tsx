@@ -98,23 +98,23 @@ export default function ContactPage() {
 
             {/* Contact direct link cards */}
             <div className="flex flex-col gap-4 mt-4">
-              <a href="tel:01056749811" className="bg-grey-50 p-5 rounded-2xl flex items-center gap-4 border border-transparent hover:border-grey-200 transition-all duration-200 group">
+              <a href="tel:0426241670" className="bg-grey-50 p-5 rounded-2xl flex items-center gap-4 border border-transparent hover:border-grey-200 transition-all duration-200 group">
                 <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-toss-blue group-hover:scale-110 transition-transform duration-200">
                   <Phone className="w-5 h-5 fill-toss-blue/10" />
                 </div>
                 <div>
                   <div className="text-[12px] text-grey-500 font-semibold">대표 번호 (상담/전화)</div>
-                  <div className="text-lg font-bold text-grey-900 mt-0.5">010-5674-9811</div>
+                  <div className="text-lg font-bold text-grey-900 mt-0.5">042-624-1670</div>
                 </div>
               </a>
 
-              <a href="mailto:jhy7608@naver.com" className="bg-grey-50 p-5 rounded-2xl flex items-center gap-4 border border-transparent hover:border-grey-200 transition-all duration-200 group">
+              <a href="mailto:dnc7500@naver.com" className="bg-grey-50 p-5 rounded-2xl flex items-center gap-4 border border-transparent hover:border-grey-200 transition-all duration-200 group">
                 <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-toss-blue group-hover:scale-110 transition-transform duration-200">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="text-[12px] text-grey-500 font-semibold">공식 이메일</div>
-                  <div className="text-lg font-bold text-grey-900 mt-0.5">jhy7608@naver.com</div>
+                  <div className="text-lg font-bold text-grey-900 mt-0.5">dnc7500@naver.com</div>
                 </div>
               </a>
 

@@ -18,7 +18,7 @@ const visions: Vision[] = [
     icon: "/아이콘1.png",
     iconClass: "w-[82px] h-[82px]",
     title: "종합 에너지 솔루션 기업으로 성장",
-    desc: "RPS 발전사업부터 자가용 PPA, 지붕임대까지\n태양광 전 분야를 아우르는 종합 솔루션을 제공합니다.",
+    desc: "RPS 발전사업부터 자가소비, 지붕임대까지\n태양광 전 분야를 아우르는 종합 솔루션을 제공합니다.",
     image: "/07.jpg",
   },
   {

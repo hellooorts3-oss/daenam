@@ -13,6 +13,8 @@ interface PageHeroProps {
   image?: string;
   /** 배경 이미지 대체 텍스트 */
   imageAlt?: string;
+  /** 배경 이미지의 보이는 위치(object-position). 예: "object-[center_75%]" (기본: 중앙) */
+  objectPosition?: string;
 }
 
 /**
@@ -20,7 +22,7 @@ interface PageHeroProps {
  * 배경은 화면 가로 전체로 확장되고, 콘텐츠만 1400px 컨테이너에 정렬됩니다.
  * 이미지가 준비되면 `image` prop만 채우면 됩니다.
  */
-export default function PageHero({ eyebrow, title, description, image, imageAlt }: PageHeroProps) {
+export default function PageHero({ eyebrow, title, description, image, imageAlt, objectPosition }: PageHeroProps) {
   return (
     <section className="relative w-full overflow-hidden">
       {/* 배경: 이미지 또는 브랜드 플레이스홀더 (가로 전체) */}
@@ -32,7 +34,7 @@ export default function PageHero({ eyebrow, title, description, image, imageAlt 
             fill
             sizes="100vw"
             quality={90}
-            className="object-cover"
+            className={`object-cover ${objectPosition ?? ""}`}
             preload
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/65 to-slate-900/40"></div>

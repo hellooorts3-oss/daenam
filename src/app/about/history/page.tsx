@@ -29,7 +29,7 @@ const historyData: HistoryYear[] = [
     events: [
       "대남에너지(DN energy) 법인 설립",
       "영업·설계·시공·유지보수 4개 전담팀 체계 확립",
-      "RPS·자가용 PPA·지붕임대사업 포트폴리오 본격 확대",
+      "RPS·자가소비·지붕임대사업 포트폴리오 본격 확대",
     ],
     image: "/11.jpg",
   },

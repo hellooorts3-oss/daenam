@@ -43,7 +43,7 @@ export default function Home() {
       href: "/business",
       icon: "/아이콘5.png",
       title: "정량적 사업타당성 분석",
-      desc: "일조량·경사도·음영을 반영한 발전량 시뮬레이션으로 RPS·PPA·지붕임대 사업의 예상 수익과 회수 기간을 사전에 투명하게 제시합니다.",
+      desc: "일조량·경사도·음영을 반영한 발전량 시뮬레이션으로 RPS·자가소비·지붕임대 사업의 예상 수익과 회수 기간을 사전에 투명하게 제시합니다.",
       image: "/images/ground-solar.png",
     },
     {
@@ -89,7 +89,7 @@ export default function Home() {
 
               <p className="animate-rise text-lg md:text-[18px] text-white/85 leading-relaxed max-w-2xl whitespace-pre-line" style={{ animationDelay: "0.34s" }}>
                 2014년 설립 이후 누적 설치용량 80MW를 달성한 종합 에너지 솔루션 기업.{"\n"}
-                RPS 발전사업부터 자가용 PPA, 지붕임대사업까지 안정적인 수익과 RE100 달성을{"\n"}
+                RPS 발전사업부터 자가소비, 지붕임대사업까지 안정적인 수익과 RE100 달성을{"\n"}
                 함께 만들어갑니다.
               </p>
 
@@ -246,11 +246,11 @@ export default function Home() {
                   유휴 공간을{"\n"}안정적인 수익으로
                 </h2>
                 <p className="text-[#75787b] leading-relaxed text-base md:text-lg whitespace-pre-line break-keep">
-                  {"대남에너지는 RPS 발전사업, 자가용 PPA, 지붕임대사업\n세 가지 모델로 공장 지붕과 유휴 부지를 활용합니다.\n초기 투자 부담은 줄이고, 전기요금 절감과\n장기 임대·발전 수익을 동시에 만들어드립니다."}
+                  {"대남에너지는 RPS 발전사업, 자가소비, 지붕임대사업\n세 가지 모델로 공장 지붕과 유휴 부지를 활용합니다.\n초기 투자 부담은 줄이고, 전기요금 절감과\n장기 임대·발전 수익을 동시에 만들어드립니다."}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-3.5 py-1.5 rounded-full bg-toss-blue-light text-toss-blue text-[13px] font-semibold">RPS 발전사업</span>
-                  <span className="px-3.5 py-1.5 rounded-full bg-toss-blue-light text-toss-blue text-[13px] font-semibold">자가용 PPA</span>
+                  <span className="px-3.5 py-1.5 rounded-full bg-toss-blue-light text-toss-blue text-[13px] font-semibold">자가소비</span>
                   <span className="px-3.5 py-1.5 rounded-full bg-brand-green-light text-brand-green text-[13px] font-semibold">지붕임대사업</span>
                 </div>
                 <div className="mt-2">

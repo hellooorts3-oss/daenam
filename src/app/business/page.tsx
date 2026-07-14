@@ -68,8 +68,8 @@ const businessModels: BusinessModel[] = [
   {
     key: "ppa",
     image: "/images/residential-solar.png",
-    imageAlt: "기업 건물 지붕에 설치된 자가용 PPA 태양광 모듈",
-    title: "자가용 PPA",
+    imageAlt: "기업 건물 지붕에 설치된 자가소비 태양광 모듈",
+    title: "자가소비",
     summary:
       "기업이 직접 생산한 태양광 전기를 사용하여 전기요금을 절감하고 친환경 경영을 실현하는 방안입니다.\n초기 투자 부담 없이 RE100에 다가가세요.",
     concept: [
@@ -238,9 +238,10 @@ export default function BusinessPage() {
       <PageHero
         eyebrow="OUR BUSINESS"
         title="사업 영역"
-        description={"대남에너지는 RPS 발전사업, 자가용 PPA, 지붕임대사업을 중심으로\n고객의 부지와 목적에 꼭 맞는 태양광 솔루션을 제안합니다."}
-        image="/04.jpg"
+        description={"대남에너지는 RPS 발전사업, 자가소비, 지붕임대사업을 중심으로\n고객의 부지와 목적에 꼭 맞는 태양광 솔루션을 제안합니다."}
+        image="/06.jpg"
         imageAlt="대남에너지 태양광 발전 설비"
+        objectPosition="object-[center_78%]"
       />
 
       <div className="container-inner py-[90px]">

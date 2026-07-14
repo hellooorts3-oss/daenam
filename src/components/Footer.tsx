@@ -18,7 +18,7 @@ export default function Footer() {
               className="h-8 w-auto self-start select-none"
             />
             <p className="leading-relaxed text-white/55 max-w-sm text-[13px]">
-              대남에너지(DN energy)는 2014년 설립 이후 12년의 태양광 전문 경력과 누적 설치용량 80MW를 달성한 종합 에너지 솔루션 기업입니다. RPS 발전사업, 자가용 PPA, 지붕임대사업으로 고객의 에너지 자립과 ESG 경영을 함께 만들어갑니다.
+              대남에너지(DN energy)는 2014년 설립 이후 12년의 태양광 전문 경력과 누적 설치용량 80MW를 달성한 종합 에너지 솔루션 기업입니다. RPS 발전사업, 자가소비, 지붕임대사업으로 고객의 에너지 자립과 ESG 경영을 함께 만들어갑니다.
             </p>
           </div>
 
@@ -26,7 +26,7 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
               <span className="font-bold text-white text-[13px]">주요 사업</span>
               <Link href="/business#rps" className="text-left text-white/65 hover:text-white text-[13px] transition-colors">RPS 발전사업</Link>
-              <Link href="/business#ppa" className="text-left text-white/65 hover:text-white text-[13px] transition-colors">자가용 PPA</Link>
+              <Link href="/business#ppa" className="text-left text-white/65 hover:text-white text-[13px] transition-colors">자가소비</Link>
               <Link href="/business#roof" className="text-left text-white/65 hover:text-white text-[13px] transition-colors">지붕임대사업</Link>
               <Link href="/business#om" className="text-left text-white/65 hover:text-white text-[13px] transition-colors">스마트 유지보수 O&M</Link>
             </div>
@@ -40,8 +40,8 @@ export default function Footer() {
 
             <div className="flex flex-col gap-3 col-span-2 sm:col-span-1">
               <span className="font-bold text-white text-[13px]">고객 센터</span>
-              <span className="text-[13px] text-white/65">전화: 010-5674-9811</span>
-              <span className="text-[13px] text-white/65">메일: jhy7608@naver.com</span>
+              <span className="text-[13px] text-white/65">전화: 042-624-1670</span>
+              <span className="text-[13px] text-white/65">메일: dnc7500@naver.com</span>
               <span className="text-[12px] text-white/40">주중 09:00 - 18:00 대기</span>
             </div>
           </div>
