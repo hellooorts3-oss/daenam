@@ -57,7 +57,15 @@ export default function VisionPage() {
       <PageHero
         eyebrow="VISION"
         title="대남에너지의 비전"
-        description={"태양광 전 분야를 아우르는 종합 에너지 솔루션 기업으로서,\nESG 경영과 탄소중립 실현에 앞장섭니다."}
+        description={
+          <>
+            태양광 전 분야를 아우르는{" "}
+            <br className="md:hidden" />
+            종합 에너지 솔루션 기업으로서,
+            <br />
+            ESG 경영과 탄소중립 실현에 앞장섭니다.
+          </>
+        }
         image="/03.jpg"
         imageAlt="대남에너지 태양광 발전 단지"
       />
@@ -92,8 +100,20 @@ export default function VisionPage() {
                       <h3 className="text-[20px] font-bold text-grey-900 break-keep">
                         {vision.title}
                       </h3>
-                      <p className="text-[16px] text-[#75787b] leading-relaxed mt-2.5 whitespace-pre-line break-keep">
-                        {vision.desc}
+                      <p className="text-[16px] text-[#75787b] leading-relaxed mt-2.5 break-keep">
+                        {/* "\n" = 모든 화면 줄바꿈, "|" = PC(md+)에서만 줄바꿈(모바일은 공백) */}
+                        {vision.desc.split("\n").map((line, li) => (
+                          <React.Fragment key={li}>
+                            {li > 0 && <br />}
+                            {line.split("|").map((seg, si) => (
+                              <React.Fragment key={si}>
+                                {si > 0 && <br className="hidden md:block" />}
+                                {si > 0 && <span className="md:hidden"> </span>}
+                                {seg}
+                              </React.Fragment>
+                            ))}
+                          </React.Fragment>
+                        ))}
                       </p>
                     </div>
                   </div>

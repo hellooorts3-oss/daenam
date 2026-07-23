@@ -47,7 +47,13 @@ export default function OrgPage() {
       <PageHero
         eyebrow="ORGANIZATION"
         title="조직도"
-        description="영업·설계·시공·유지보수 4개 전담팀이 사업의 전 과정을 직접 책임집니다."
+        description={
+          <>
+            영업·설계·시공·유지보수 4개 전담팀이 사업의{" "}
+            <br className="md:hidden" />
+            전 과정을 직접 책임집니다.
+          </>
+        }
         image="/10.jpg"
         imageAlt="대남에너지 태양광 시공 현장"
       />

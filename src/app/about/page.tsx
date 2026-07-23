@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react";
 const stats = [
   { value: "2014", label: "현수에너지 설립" },
   { value: "2024", label: "대남에너지 법인 설립" },
-  { value: "12년", label: "태양광 전문 경력" },
+  { value: "12년", label: "태양광 사업 운영" },
   { value: "80MW", label: "누적 설치용량" },
 ];
 

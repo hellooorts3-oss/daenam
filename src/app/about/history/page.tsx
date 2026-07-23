@@ -18,7 +18,7 @@ const historyData: HistoryYear[] = [
     label: "현재",
     events: [
       "누적 설치용량 80MW 달성",
-      "12년의 태양광 전문 경력 확보",
+      "2014년부터 이어온 태양광 발전 전문성 확보",
       "종합 에너지 솔루션 기업으로 도약",
     ],
     image: "/12.jpg",
@@ -53,7 +53,15 @@ export default function HistoryPage() {
       <PageHero
         eyebrow="HISTORY"
         title="대남에너지의 발자취"
-        description={"2014년 현수에너지 설립부터 2024년 대남에너지 법인 설립까지,\n12년의 태양광 전문 여정입니다."}
+        description={
+          <>
+            2014년 현수에너지 설립부터{" "}
+            <br className="md:hidden" />
+            2024년 대남에너지 법인 설립까지,
+            <br />
+            한 길을 이어온 태양광 발전 전문 여정입니다.
+          </>
+        }
         image="/05.jpg"
         imageAlt="대남에너지 태양광 발전 현장"
       />
@@ -85,7 +93,7 @@ export default function HistoryPage() {
                     style={{ transitionDelay: `${index * 0.1}s` }}
                   >
                     <div className="relative">
-                      <span className="absolute -top-4 right-2 text-6xl md:text-7xl font-bold text-toss-blue/12 leading-none select-none">
+                      <span className="absolute -top-4 right-2 text-[42px] md:text-7xl font-bold text-toss-blue/12 leading-none select-none">
                         {item.year.replace("년", "")}
                       </span>
                       <div className="relative">

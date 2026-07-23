@@ -7,8 +7,8 @@ interface PageHeroProps {
   eyebrow: string;
   /** 카테고리 제목 (페이지의 h1) */
   title: string;
-  /** 카테고리 소개 문구 */
-  description: string;
+  /** 카테고리 소개 문구 (문자열 또는 JSX — 모바일 전용 줄바꿈 등에 활용) */
+  description: React.ReactNode;
   /** 배경 이미지 경로. 미지정 시 브랜드 그라데이션 플레이스홀더가 표시됩니다. */
   image?: string;
   /** 배경 이미지 대체 텍스트 */

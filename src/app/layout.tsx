@@ -6,12 +6,12 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "대남에너지 (DN energy) - 태양광 발전·RPS·자가소비·지붕임대 전문 기업",
-  description: "2014년 설립, 12년의 태양광 전문 경력과 누적 설치용량 80MW. RPS 발전사업, 자가소비, 지붕임대사업까지 책임지는 종합 에너지 솔루션 기업 대남에너지입니다.",
+  description: "2014년 설립 이후 축적해 온 태양광 발전 전문성과 누적 설치용량 80MW. RPS 발전사업, 자가소비, 지붕임대사업까지 책임지는 종합 에너지 솔루션 기업 대남에너지입니다.",
   keywords: ["대남에너지", "DN energy", "태양광", "태양광발전", "태양광시공", "신재생에너지", "RPS", "자가소비", "지붕임대사업", "RE100"],
   authors: [{ name: "대남에너지" }],
   openGraph: {
     title: "대남에너지 (DN energy) - 태양광 발전 전문 기업",
-    description: "12년 태양광 전문 경력, 누적 설치용량 80MW. RPS·자가소비·지붕임대사업 전문 종합 에너지 솔루션 기업.",
+    description: "2014년 설립, 누적 설치용량 80MW. RPS·자가소비·지붕임대사업 전문 종합 에너지 솔루션 기업.",
     url: "https://daenam-energy.vercel.app",
     siteName: "대남에너지",
     locale: "ko_KR",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "대남에너지 (DN energy) - 태양광 발전 전문 기업",
-    description: "12년 태양광 전문 경력, 누적 설치용량 80MW의 종합 에너지 솔루션 기업.",
+    description: "2014년 설립, 누적 설치용량 80MW의 종합 에너지 솔루션 기업.",
   },
   robots: {
     index: true,

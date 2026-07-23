@@ -18,7 +18,7 @@ export default function Footer() {
               className="h-8 w-auto self-start select-none"
             />
             <p className="leading-relaxed text-white/55 max-w-sm text-[13px]">
-              대남에너지(DN energy)는 2014년 설립 이후 12년의 태양광 전문 경력과 누적 설치용량 80MW를 달성한 종합 에너지 솔루션 기업입니다. RPS 발전사업, 자가소비, 지붕임대사업으로 고객의 에너지 자립과 ESG 경영을 함께 만들어갑니다.
+              대남에너지(DN energy)는 2014년 설립 이후 축적해 온 태양광 발전 전문성과 누적 설치용량 80MW를 달성한 종합 에너지 솔루션 기업입니다. RPS 발전사업, 자가소비, 지붕임대사업으로 고객의 에너지 자립과 ESG 경영을 함께 만들어갑니다.
             </p>
             <div className="flex flex-col gap-1.5 text-[13px] text-white/55 mt-1">
               <span><span className="text-white/40 mr-2">대표</span>진현용</span>
@@ -44,7 +44,6 @@ export default function Footer() {
 
             <div className="flex flex-col gap-2.5 col-span-2 sm:col-span-1">
               <span className="font-bold text-white text-[13px]">고객 센터</span>
-              <a href="tel:01056749811" className="text-[13px] text-white/65 hover:text-white transition-colors">대표번호: 010-5674-9811</a>
               <a href="tel:0426241670" className="text-[13px] text-white/65 hover:text-white transition-colors">전화: 042-624-1670</a>
               <span className="text-[13px] text-white/65">팩스: 042-367-1670</span>
               <a href="mailto:dnc7500@naver.com" className="text-[13px] text-white/65 hover:text-white transition-colors">이메일: dnc7500@naver.com</a>
